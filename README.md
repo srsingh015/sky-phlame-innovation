@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SKY PHLAME INNOVATION Website
 
-## Getting Started
+Marketing website for SKY PHLAME INNOVATION built with Next.js App Router, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+## Edit here
 
-To learn more about Next.js, take a look at the following resources:
+- Phone number, email, WhatsApp number, default WhatsApp message, services list, client list, service areas, and shared copy:
+  - `lib/site-content.ts`
+- WhatsApp link building, call/mail helpers, and LocalBusiness schema:
+  - `lib/site.ts`
+- Page metadata helpers:
+  - `lib/seo.ts`
+- Colors, buttons, spacing feel, and typography tokens:
+  - `app/globals.css`
+- Drop-in logo, OG image, and future photos/logos:
+  - `public/assets/`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Site URL
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Set the production site URL by changing `siteConfig.siteUrl` in `lib/site-content.ts` or by providing `NEXT_PUBLIC_SITE_URL` at build time.
 
-## Deploy on Vercel
+## Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The quote form does not submit to a backend. It opens WhatsApp with the encoded enquiry details.
+- The services and copy are based on the provided company profile PDF, with grammar lightly polished for the website.
+- Placeholder assets are already wired so real logos and photos can replace them later without changing the page structure.
