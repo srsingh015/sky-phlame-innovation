@@ -132,7 +132,7 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-brand-border/70 bg-white/95 supports-[backdrop-filter]:bg-white/[0.84] supports-[backdrop-filter]:backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#0f1729]/80 supports-[backdrop-filter]:bg-[#0f1729]/[0.72] supports-[backdrop-filter]:backdrop-blur-xl supports-[backdrop-filter]:backdrop-saturate-[1.4]" style={{ boxShadow: '0 1px 0 rgba(239, 68, 68, 0.06), 0 8px 32px -16px rgba(0, 0, 0, 0.3)' }}>
       <Container>
         <div className="flex min-h-[var(--header-h)] min-w-0 items-center gap-2 py-2.5 sm:gap-3 sm:py-3 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-8">
           <BrandMark className="min-w-0 flex-1 lg:min-w-[18.5rem] lg:flex-none lg:justify-self-start" compact />
@@ -150,7 +150,7 @@ export function Header() {
                   "rounded-pill px-3.5 py-2 text-sm font-medium transition",
                   isActiveLink(pathname, item.href)
                     ? "bg-brand-accent text-brand-navy"
-                    : "text-brand-muted hover:bg-white hover:text-brand-navy",
+                    : "text-brand-muted hover:bg-white/[0.06] hover:text-brand-navy",
                 )}
               >
                 {item.label}
@@ -221,7 +221,7 @@ export function Header() {
                 type="button"
                 aria-label="Close navigation overlay"
                 className={[
-                  "fixed inset-0 bg-brand-navy/32 transition-opacity duration-200 ease-out",
+                  "fixed inset-0 bg-black/50 transition-opacity duration-200 ease-out",
                   isMenuOpen ? "opacity-100" : "opacity-0",
                 ].join(" ")}
                 onClick={() => closeMenu(true)}
@@ -233,11 +233,11 @@ export function Header() {
                 aria-modal="true"
                 aria-label="Navigation menu"
                 className={[
-                  "fixed right-0 top-0 flex h-dvh w-[min(88vw,360px)] max-w-none flex-col border-l border-brand-border/70 bg-white shadow-[0_24px_56px_-30px_rgba(15,33,59,0.34)] transition-transform duration-300 ease-out",
+                  "fixed right-0 top-0 flex h-dvh w-[min(88vw,360px)] max-w-none flex-col border-l border-white/[0.08] bg-[#0f1729] shadow-[0_24px_56px_-30px_rgba(0,0,0,0.6)] transition-transform duration-300 ease-out",
                   isMenuOpen ? "translate-x-0" : "translate-x-full",
                 ].join(" ")}
               >
-                <div className="flex items-center justify-between gap-3 border-b border-brand-border/80 px-4 pb-4 pt-[calc(env(safe-area-inset-top)+1rem)]">
+                <div className="flex items-center justify-between gap-3 border-b border-white/[0.08] px-4 pb-4 pt-[calc(env(safe-area-inset-top)+1rem)]">
                   <BrandMark className="min-w-0 flex-1" compact />
                   <button
                     ref={closeButtonRef}
@@ -266,7 +266,7 @@ export function Header() {
                         "rounded-card px-4 py-3 text-base font-semibold transition",
                         isActiveLink(pathname, item.href)
                           ? "bg-brand-accent text-brand-navy"
-                          : "text-brand-navy hover:bg-brand-surface-soft",
+                          : "text-brand-navy hover:bg-white/[0.06]",
                       )}
                     >
                       {item.label}
@@ -274,7 +274,7 @@ export function Header() {
                   ))}
                 </nav>
   
-                <div className="border-t border-brand-border/80 px-4 pb-[calc(env(safe-area-inset-bottom)+1rem)] pt-4">
+                <div className="border-t border-white/[0.08] px-4 pb-[calc(env(safe-area-inset-bottom)+1rem)] pt-4">
                   <div className="flex flex-col gap-3">
                     <ButtonLink
                       href={whatsappHref}

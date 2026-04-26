@@ -34,7 +34,7 @@ export function ClientLogoCard({
         }`}
       >
         <div
-          className={`flex items-center justify-center rounded-[1rem] border border-brand-border/55 bg-white ${
+          className={`flex items-center justify-center rounded-[1rem] border border-white/[0.12] bg-white ${
             compact
               ? "h-[3.35rem] min-w-[9.75rem] px-4"
               : "h-[3.75rem] min-w-[11rem] px-5"

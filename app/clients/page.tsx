@@ -10,6 +10,7 @@ import {
 } from "@/components/icons";
 import { PageSection } from "@/components/page-section";
 import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
 import { createPageMetadata } from "@/lib/seo";
 import { clients, siteConfig } from "@/lib/site-content";
 import { buildPhoneHref } from "@/lib/site";
@@ -92,35 +93,255 @@ export default function ClientsPage() {
       <PageSection
         spacing="none"
         ariaLabelledby="clients-hero-title"
-        className="relative isolate overflow-hidden before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.98)_0%,rgba(251,245,246,0.92)_52%,rgba(255,255,255,0.95)_100%)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_18%_20%,rgba(15,33,59,0.11),transparent_30%),radial-gradient(circle_at_84%_22%,rgba(199,48,44,0.12),transparent_26%),radial-gradient(circle_at_70%_72%,rgba(15,33,59,0.05),transparent_22%)]"
+        className="relative isolate overflow-hidden before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(9,16,26,0.98)_0%,rgba(15,23,41,0.92)_52%,rgba(9,16,26,0.95)_100%)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_18%_20%,rgba(59,130,246,0.06),transparent_30%),radial-gradient(circle_at_84%_22%,rgba(239,68,68,0.1),transparent_26%),radial-gradient(circle_at_70%_72%,rgba(59,130,246,0.04),transparent_22%)]"
         containerClassName="relative inner-hero-wrap"
       >
-        <div className="pointer-events-none absolute inset-0 hidden opacity-[0.08] md:block md:opacity-[0.12] [background-image:radial-gradient(rgba(15,33,59,0.08)_0.75px,transparent_0.75px)] [background-size:18px_18px]" />
-        <div className="inner-hero-grid">
-          <div className="max-w-[40rem]">
-            <p className="inner-eyebrow">Clients</p>
-            <h1
-              id="clients-hero-title"
-              className="inner-h1 mt-2"
-            >
-              Trusted across manufacturing, commercial, and residential
-              projects.
-            </h1>
-            <p className="inner-lead mt-4">
-              {siteConfig.clientsIntro}
+        <div className="pointer-events-none absolute inset-0 hidden opacity-[0.08] md:block md:opacity-[0.12] [background-image:radial-gradient(rgba(255,255,255,0.06)_0.75px,transparent_0.75px)] [background-size:18px_18px]" />
+        <Reveal y={30} duration={0.8}>
+          <div className="inner-hero-grid">
+            <div className="max-w-[40rem]">
+              <p className="inner-eyebrow">Clients</p>
+              <h1
+                id="clients-hero-title"
+                className="inner-h1 mt-2"
+              >
+                Trusted across manufacturing, commercial, and residential
+                projects.
+              </h1>
+              <p className="inner-lead mt-4">
+                {siteConfig.clientsIntro}
+              </p>
+
+              <div className="inner-hero-actions">
+                <div className="inner-hero-actions-row">
+                  <ButtonLink
+                    href={clientsWhatsappHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    variant="whatsapp"
+                    size="lg"
+                    block
+                    className="min-h-11 sm:min-h-12 sm:w-auto"
+                    aria-label="WhatsApp SKY PHLAME INNOVATION to discuss a site requirement"
+                  >
+                    <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
+                    WhatsApp Now
+                  </ButtonLink>
+                  <ButtonLink
+                    href={buildPhoneHref()}
+                    variant="secondary"
+                    size="lg"
+                    block
+                    className="min-h-11 sm:min-h-12 sm:w-auto"
+                    aria-label="Call SKY PHLAME INNOVATION"
+                  >
+                    <PhoneIcon className="h-4 w-4" aria-hidden="true" />
+                    Call Now
+                  </ButtonLink>
+                </div>
+              </div>
+            </div>
+
+            <aside className="inner-hero-card">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.08),transparent_34%),linear-gradient(180deg,rgba(15,23,41,0.4),rgba(9,16,26,0.15))]" />
+              <div className="relative">
+                <p className="inner-eyebrow">Proof</p>
+                <h2 className="inner-h2 mt-3.5 text-balance">
+                  Built for live operating environments
+                </h2>
+
+                <ul className="mt-4 grid gap-2.5 text-sm leading-6 text-brand-muted">
+                  {heroProofBullets.map((item) => (
+                    <li key={item} className="flex items-start gap-3 rounded-[0.9rem] bg-white/[0.04] p-3 border border-white/[0.08] shadow-sm transition-all hover:-translate-y-0.5">
+                      <CheckIcon
+                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-red"
+                        aria-hidden="true"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-3.5">
+                  <p className="proof-line">Coverage</p>
+                  <div className="mt-2.5 flex flex-wrap gap-1.5">
+                    {siteConfig.serviceAreas.map((area) => (
+                      <span
+                        key={area}
+                        className="inline-flex items-center rounded-pill border border-white/[0.08] bg-white/[0.04] px-2.25 py-1.25 text-[0.7rem] font-semibold text-brand-ink shadow-soft md:px-2.5 md:py-1.5 md:text-[0.72rem]"
+                      >
+                        {area}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </Reveal>
+      </PageSection>
+
+      <PageSection
+        spacing="tight"
+        ariaLabelledby="client-grid-heading"
+        containerClassName="relative"
+      >
+        <Reveal y={30} duration={0.7}>
+          <div className="section-shell">
+            <SectionHeading
+              id="client-grid-heading"
+              eyebrow="Trusted By"
+              title="Client relationships shaped by dependable site support"
+              description="Trusted by operating teams that need practical fire, security, and AV support without losing time on slow coordination."
+            />
+
+            <p className="mt-4 proof-line">
+              Trusted by industrial, commercial, and residential environments that
+              need reliable follow-through.
             </p>
 
-            <div className="inner-hero-actions">
-              <div className="inner-hero-actions-row">
+            <div className="section-stack relative flex overflow-hidden hover-pause [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4">
+              <div className="flex min-w-full shrink-0 animate-marquee items-stretch gap-4 pr-4">
+                {clients.map((client, index) => (
+                  <div key={`${client.name}-${index}`} className="w-[320px] shrink-0">
+                    <ClientLogoCard
+                      client={{
+                        ...client,
+                        descriptor: clientDescriptors[client.name],
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="flex min-w-full shrink-0 animate-marquee items-stretch gap-4 pr-4" aria-hidden="true">
+                {clients.map((client, index) => (
+                  <div key={`${client.name}-duplicate-${index}`} className="w-[320px] shrink-0">
+                    <ClientLogoCard
+                      client={{
+                        ...client,
+                        descriptor: clientDescriptors[client.name],
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </PageSection>
+
+      <PageSection
+        spacing="tight"
+        ariaLabelledby="case-snapshots-heading"
+        containerClassName="relative"
+      >
+        <Reveal y={30} duration={0.7}>
+          <div className="section-shell">
+            <SectionHeading
+              id="case-snapshots-heading"
+              eyebrow="What Clients Typically Need"
+              title="Common requirement patterns across live projects"
+              description="The most frequent requests center on protection coverage, clearer control of movement, and dependable communication systems."
+            />
+
+            <div className="section-stack section-grid md:grid-cols-3 md:[grid-auto-rows:1fr]">
+              {caseSnapshots.map((item) => (
+                <article
+                  key={item.title}
+                  className="feature-card card-pad flex h-full flex-col transition motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-lift"
+                >
+                  <IconCircle className="h-11 w-11 md:h-12 md:w-12">
+                    <ServiceIcon
+                      name={item.icon}
+                      className="h-5 w-5 md:h-[1.35rem] md:w-[1.35rem]"
+                      aria-hidden="true"
+                    />
+                  </IconCircle>
+                  <h3 className="mt-5 text-xl font-semibold leading-snug text-brand-navy">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-brand-muted">
+                    {item.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </PageSection>
+
+      <PageSection
+        spacing="tight"
+        ariaLabelledby="project-sectors-heading"
+        containerClassName="relative"
+      >
+        <Reveal y={30} duration={0.7}>
+          <div className="section-shell">
+            <SectionHeading
+              id="project-sectors-heading"
+              eyebrow="Project Sectors"
+              title="Delivery experience shaped by how each site actually operates"
+              description="Customer work spans manufacturing, commercial, and residential environments where uptime, visibility, and practical support all matter."
+            />
+
+            <div className="section-stack section-grid md:grid-cols-2 md:[grid-auto-rows:1fr] xl:grid-cols-3">
+              {sectorCards.map((sector) => (
+                <article
+                  key={sector.title}
+                  className="feature-card card-pad flex h-full flex-col transition motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-lift"
+                >
+                  <IconCircle className="h-11 w-11 md:h-12 md:w-12">
+                    <ServiceIcon
+                      name={sector.icon}
+                      className="h-5 w-5 md:h-[1.35rem] md:w-[1.35rem]"
+                      aria-hidden="true"
+                    />
+                  </IconCircle>
+                  <h3 className="mt-5 text-xl font-semibold text-brand-navy">
+                    {sector.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-brand-muted">
+                    {sector.description}
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {sector.chips.map((chip) => (
+                      <span key={chip} className="chip">
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </PageSection>
+
+      <PageSection spacing="tight" containerClassName="relative">
+        <Reveal y={30} duration={0.7}>
+          <div className="cta-panel">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.15),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.06),transparent_24%)]" />
+            <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-2xl">
+                <p className="eyebrow text-brand-red-strong">
+                  Start the conversation
+                </p>
+                <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                  Discuss your site requirements on WhatsApp
+                </h2>
+                <p className="mt-4 text-sm leading-7 text-white/76 sm:text-base">
+                  Local support across {siteConfig.serviceAreas.join(", ")}.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <ButtonLink
                   href={clientsWhatsappHref}
                   target="_blank"
                   rel="noreferrer"
                   variant="whatsapp"
                   size="lg"
-                  block
-                  className="min-h-11 sm:min-h-12 sm:w-auto"
-                  aria-label="WhatsApp SKY PHLAME INNOVATION to discuss a site requirement"
+                  aria-label="WhatsApp SKY PHLAME INNOVATION now"
                 >
                   <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
                   WhatsApp Now
@@ -129,9 +350,7 @@ export default function ClientsPage() {
                   href={buildPhoneHref()}
                   variant="secondary"
                   size="lg"
-                  block
-                  className="min-h-11 sm:min-h-12 sm:w-auto"
-                  aria-label="Call SKY PHLAME INNOVATION"
+                  aria-label="Call SKY PHLAME INNOVATION now"
                 >
                   <PhoneIcon className="h-4 w-4" aria-hidden="true" />
                   Call Now
@@ -139,201 +358,7 @@ export default function ClientsPage() {
               </div>
             </div>
           </div>
-
-          <aside className="inner-hero-card">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,48,44,0.12),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.56),rgba(255,255,255,0.18))]" />
-            <div className="relative">
-              <p className="inner-eyebrow">Proof</p>
-              <h2 className="inner-h2 mt-3.5 text-balance">
-                Built for live operating environments
-              </h2>
-
-              <ul className="mt-3.5 grid gap-2.5 text-sm leading-6 text-brand-muted">
-                {heroProofBullets.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckIcon
-                      className="mt-1 h-4 w-4 shrink-0 text-brand-red"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-3.5">
-                <p className="proof-line">Coverage</p>
-                <div className="mt-2.5 flex flex-wrap gap-1.5">
-                  {siteConfig.serviceAreas.map((area) => (
-                    <span
-                      key={area}
-                      className="inline-flex items-center rounded-pill border border-white/80 bg-white/[0.72] px-2.25 py-1.25 text-[0.7rem] font-semibold text-brand-navy shadow-soft md:px-2.5 md:py-1.5 md:text-[0.72rem]"
-                    >
-                      {area}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </PageSection>
-
-      <PageSection
-        spacing="tight"
-        ariaLabelledby="client-grid-heading"
-        containerClassName="relative"
-      >
-        <div className="section-shell">
-          <SectionHeading
-            id="client-grid-heading"
-            eyebrow="Trusted By"
-            title="Client relationships shaped by dependable site support"
-            description="Trusted by operating teams that need practical fire, security, and AV support without losing time on slow coordination."
-          />
-
-          <p className="mt-4 proof-line">
-            Trusted by industrial, commercial, and residential environments that
-            need reliable follow-through.
-          </p>
-
-          <div className="section-stack grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 xl:grid-cols-5">
-            {clients.map((client) => (
-              <ClientLogoCard
-                key={client.name}
-                client={{
-                  ...client,
-                  descriptor: clientDescriptors[client.name],
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      </PageSection>
-
-      <PageSection
-        spacing="tight"
-        ariaLabelledby="case-snapshots-heading"
-        containerClassName="relative"
-      >
-        <div className="section-shell">
-          <SectionHeading
-            id="case-snapshots-heading"
-            eyebrow="What Clients Typically Need"
-            title="Common requirement patterns across live projects"
-            description="The most frequent requests center on protection coverage, clearer control of movement, and dependable communication systems."
-          />
-
-          <div className="section-stack section-grid md:grid-cols-3 md:[grid-auto-rows:1fr]">
-            {caseSnapshots.map((item) => (
-              <article
-                key={item.title}
-                className="feature-card card-pad flex h-full flex-col transition motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-lift"
-              >
-                <IconCircle className="h-11 w-11 md:h-12 md:w-12">
-                  <ServiceIcon
-                    name={item.icon}
-                    className="h-5 w-5 md:h-[1.35rem] md:w-[1.35rem]"
-                    aria-hidden="true"
-                  />
-                </IconCircle>
-                <h3 className="mt-5 text-xl font-semibold leading-snug text-brand-navy">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-brand-muted">
-                  {item.description}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </PageSection>
-
-      <PageSection
-        spacing="tight"
-        ariaLabelledby="project-sectors-heading"
-        containerClassName="relative"
-      >
-        <div className="section-shell">
-          <SectionHeading
-            id="project-sectors-heading"
-            eyebrow="Project Sectors"
-            title="Delivery experience shaped by how each site actually operates"
-            description="Customer work spans manufacturing, commercial, and residential environments where uptime, visibility, and practical support all matter."
-          />
-
-          <div className="section-stack section-grid md:grid-cols-2 md:[grid-auto-rows:1fr] xl:grid-cols-3">
-            {sectorCards.map((sector) => (
-              <article
-                key={sector.title}
-                className="feature-card card-pad flex h-full flex-col transition motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-lift"
-              >
-                <IconCircle className="h-11 w-11 md:h-12 md:w-12">
-                  <ServiceIcon
-                    name={sector.icon}
-                    className="h-5 w-5 md:h-[1.35rem] md:w-[1.35rem]"
-                    aria-hidden="true"
-                  />
-                </IconCircle>
-                <h3 className="mt-5 text-xl font-semibold text-brand-navy">
-                  {sector.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-brand-muted">
-                  {sector.description}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {sector.chips.map((chip) => (
-                    <span key={chip} className="chip">
-                      {chip}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </PageSection>
-
-      <PageSection spacing="tight" containerClassName="relative">
-        <div className="cta-panel">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,48,44,0.18),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_24%)]" />
-          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="eyebrow text-brand-red-strong">
-                Start the conversation
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Discuss your site requirements on WhatsApp
-              </h2>
-              <p className="mt-4 text-sm leading-7 text-white/76 sm:text-base">
-                Local support across {siteConfig.serviceAreas.join(", ")}.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <ButtonLink
-                href={clientsWhatsappHref}
-                target="_blank"
-                rel="noreferrer"
-                variant="whatsapp"
-                size="lg"
-                aria-label="WhatsApp SKY PHLAME INNOVATION now"
-              >
-                <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
-                WhatsApp Now
-              </ButtonLink>
-              <ButtonLink
-                href={buildPhoneHref()}
-                variant="secondary"
-                size="lg"
-                className="border-white/18 bg-white/8 text-white hover:border-white/34 hover:bg-white/14"
-                aria-label="Call SKY PHLAME INNOVATION now"
-              >
-                <PhoneIcon className="h-4 w-4" aria-hidden="true" />
-                Call Now
-              </ButtonLink>
-            </div>
-          </div>
-        </div>
+        </Reveal>
       </PageSection>
     </div>
   );

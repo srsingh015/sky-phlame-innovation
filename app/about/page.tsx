@@ -11,6 +11,7 @@ import {
 } from "@/components/icons";
 import { PageSection } from "@/components/page-section";
 import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
 import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-content";
 import { buildPhoneHref, buildWhatsAppUrl } from "@/lib/site";
@@ -97,11 +98,12 @@ export default function AboutPage() {
       <PageSection
         spacing="none"
         ariaLabelledby="about-hero-title"
-        className="relative isolate overflow-hidden bg-transparent before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.94)_0%,rgba(251,246,247,0.88)_44%,rgba(242,246,250,0.74)_100%)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_22%_26%,rgba(255,255,255,0.72),transparent_32%),radial-gradient(circle_at_82%_24%,rgba(199,48,44,0.12),transparent_30%),radial-gradient(circle_at_72%_78%,rgba(15,33,59,0.04),transparent_24%),linear-gradient(90deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.03)_44%,rgba(255,255,255,0)_100%)]"
+        className="relative isolate overflow-hidden bg-transparent before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(9,16,26,0.95)_0%,rgba(15,23,41,0.9)_44%,rgba(9,16,26,0.92)_100%)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_22%_26%,rgba(15,23,41,0.6),transparent_32%),radial-gradient(circle_at_82%_24%,rgba(239,68,68,0.1),transparent_30%),radial-gradient(circle_at_72%_78%,rgba(59,130,246,0.04),transparent_24%),linear-gradient(90deg,rgba(255,255,255,0.03)_0%,rgba(255,255,255,0.01)_44%,rgba(255,255,255,0)_100%)]"
         containerClassName="relative inner-hero-wrap"
       >
-        <div className="inner-hero-grid">
-          <div className="max-w-[39rem] lg:max-w-[41rem]">
+        <Reveal y={30} duration={0.8}>
+          <div className="inner-hero-grid">
+            <div className="max-w-[39rem] lg:max-w-[41rem]">
             <p className="inner-eyebrow">About SKY PHLAME INNOVATION</p>
             <h1
               id="about-hero-title"
@@ -147,7 +149,7 @@ export default function AboutPage() {
                 {aboutTrustChips.map((chip) => (
                   <span
                     key={chip}
-                    className="inline-flex items-center rounded-pill border border-white/85 bg-white/70 px-2.75 py-1.25 text-[0.7rem] font-semibold leading-5 text-brand-navy shadow-soft backdrop-blur-sm md:px-3 md:py-1.5 md:text-[0.72rem] lg:px-2.5 lg:py-1.25"
+                    className="inline-flex items-center rounded-pill border border-white/[0.1] bg-white/[0.06] px-2.75 py-1.25 text-[0.7rem] font-semibold leading-5 text-brand-ink shadow-soft backdrop-blur-sm md:px-3 md:py-1.5 md:text-[0.72rem] lg:px-2.5 lg:py-1.25"
                   >
                     {chip}
                   </span>
@@ -157,27 +159,27 @@ export default function AboutPage() {
           </div>
 
           <aside className="inner-hero-card">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,48,44,0.1),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.58),rgba(250,244,245,0.32))]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.08),transparent_34%),linear-gradient(180deg,rgba(15,23,41,0.4),rgba(9,16,26,0.2))]" />
             <div className="relative">
               <p className="inner-eyebrow">At a glance</p>
-              <ul className="mt-3.5 grid gap-2.5 text-sm leading-6 text-brand-navy/72">
+              <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 text-sm leading-6 text-brand-navy/80">
                 {aboutGlance.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
+                  <li key={item} className="flex items-start gap-3 rounded-[1rem] bg-white/[0.04] p-3.5 shadow-sm border border-white/[0.08] transition-all hover:-translate-y-0.5 hover:shadow-soft">
                     <CheckIcon
-                      className="mt-1 h-4 w-4 shrink-0 text-brand-red"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-brand-red"
                       aria-hidden="true"
                     />
-                    <span>{item}</span>
+                    <span className="leading-snug">{item}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-3.5 border-t border-white/75 pt-3">
+              <div className="mt-3.5 border-t border-white/[0.08] pt-3">
                 <div className="flex flex-wrap gap-1.5">
                   {siteConfig.about.coreValues.map((value) => (
                     <span
                       key={value}
-                      className="inline-flex items-center rounded-pill border border-white/82 bg-white/[0.76] px-2.25 py-1 text-[0.7rem] font-semibold text-brand-navy shadow-soft md:px-2.5 md:text-[0.72rem]"
+                      className="inline-flex items-center rounded-pill border border-white/[0.08] bg-white/[0.04] px-2.25 py-1 text-[0.7rem] font-semibold text-brand-ink shadow-soft md:px-2.5 md:text-[0.72rem]"
                     >
                       {value}
                     </span>
@@ -186,7 +188,8 @@ export default function AboutPage() {
               </div>
             </div>
           </aside>
-        </div>
+          </div>
+        </Reveal>
       </PageSection>
 
       <PageSection
@@ -194,8 +197,9 @@ export default function AboutPage() {
         ariaLabelledby="company-story-heading"
         containerClassName="relative"
       >
-        <div className="section-shell">
-          <div className="section-grid lg:grid-cols-[minmax(0,1fr)_minmax(19rem,23rem)] lg:gap-10">
+        <Reveal y={30} duration={0.7}>
+          <div className="section-shell">
+            <div className="section-grid lg:grid-cols-[minmax(0,1fr)_minmax(19rem,23rem)] lg:gap-10">
             <div>
               <SectionHeading
                 id="company-story-heading"
@@ -238,8 +242,9 @@ export default function AboutPage() {
                 </div>
               </div>
             </aside>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </PageSection>
 
       <PageSection
@@ -247,8 +252,9 @@ export default function AboutPage() {
         ariaLabelledby="vision-mission-heading"
         containerClassName="relative"
       >
-        <div className="section-shell">
-          <SectionHeading
+        <Reveal y={30} duration={0.7}>
+          <div className="section-shell">
+            <SectionHeading
             id="vision-mission-heading"
             eyebrow="Vision & Mission"
             title="Clear direction backed by disciplined technical delivery"
@@ -275,8 +281,9 @@ export default function AboutPage() {
                 {siteConfig.about.mission}
               </p>
             </article>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </PageSection>
 
       <PageSection
@@ -285,8 +292,9 @@ export default function AboutPage() {
         className="section-bridge"
         containerClassName="relative"
       >
-        <div className="section-shell">
-          <SectionHeading
+        <Reveal y={30} duration={0.7}>
+          <div className="section-shell">
+            <SectionHeading
             id="about-benefits-heading"
             eyebrow="Why It Matters"
             title="Trust built through local reach, trained execution, and practical support"
@@ -309,8 +317,9 @@ export default function AboutPage() {
                 <p className="proof-line mt-auto pt-5">{item.proof}</p>
               </article>
             ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
       </PageSection>
 
       <PageSection
@@ -318,8 +327,9 @@ export default function AboutPage() {
         ariaLabelledby="how-we-work-heading"
         containerClassName="relative"
       >
-        <div className="section-shell">
-          <SectionHeading
+        <Reveal y={30} duration={0.7}>
+          <div className="section-shell">
+            <SectionHeading
             id="how-we-work-heading"
             eyebrow="How We Work"
             title="A compact process from first site survey to ongoing support"
@@ -332,10 +342,10 @@ export default function AboutPage() {
                 key={step}
                 className="relative flex items-start gap-4 xl:flex-col xl:gap-4"
               >
-                <span className="relative z-10 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-semibold text-white shadow-soft">
+                <span className="relative z-10 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-red text-sm font-semibold text-white shadow-soft">
                   {index + 1}
                 </span>
-                <div className="flex-1 rounded-[1.2rem] border border-white/80 bg-white/[0.78] px-4 py-4 shadow-soft backdrop-blur-sm">
+                <div className="flex-1 rounded-[1.2rem] border border-white/[0.08] bg-white/[0.04] px-4 py-4 shadow-soft backdrop-blur-sm">
                   <h3 className="text-lg font-semibold text-brand-navy">
                     {step}
                   </h3>
@@ -346,12 +356,14 @@ export default function AboutPage() {
               </li>
             ))}
           </ol>
-        </div>
+          </div>
+        </Reveal>
       </PageSection>
 
       <PageSection spacing="tight" containerClassName="relative">
-        <div className="cta-panel">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,48,44,0.18),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_24%)]" />
+        <Reveal y={30} duration={0.7}>
+          <div className="cta-panel">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.15),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.06),transparent_24%)]" />
           <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
               <p className="eyebrow text-brand-red-strong">Start the conversation</p>
@@ -381,7 +393,6 @@ export default function AboutPage() {
                 href={buildPhoneHref()}
                 variant="secondary"
                 size="lg"
-                className="border-white/18 bg-white/8 text-white hover:border-white/34 hover:bg-white/14"
                 aria-label="Call SKY PHLAME INNOVATION now"
               >
                 <PhoneIcon className="h-4 w-4" aria-hidden="true" />
@@ -389,7 +400,8 @@ export default function AboutPage() {
               </ButtonLink>
             </div>
           </div>
-        </div>
+          </div>
+        </Reveal>
       </PageSection>
     </div>
   );

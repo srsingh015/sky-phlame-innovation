@@ -31,7 +31,7 @@ export function CTASection({
       id={id}
       className={cn(
         "section",
-        isDark ? "bg-brand-navy text-white" : "bg-transparent",
+        isDark ? "bg-[#060c14] text-white" : "bg-transparent",
         className,
       )}
     >

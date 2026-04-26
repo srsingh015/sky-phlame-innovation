@@ -33,9 +33,9 @@ const whatsappHref = buildWhatsAppTextUrl(
 );
 
 const mapsEmbedUrl =
-  "https://www.google.com/maps?q=D-1001%20Manjalpur%20Vadodara&output=embed";
+  "https://www.google.com/maps?q=4F-407%20Rama%20Emperro%20Beside%20Shell%20Petrol%20Pump%20Akashwani%20Road%20Manjalpur%20Vadodara%20Gujarat%20390011&output=embed";
 const mapsOpenUrl =
-  "https://www.google.com/maps/search/?api=1&query=D-1001%20Manjalpur%20Vadodara";
+  "https://maps.app.goo.gl/HyMGA5nVQzYcSK4y7?g_st=aw";
 
 const contactCards = [
   {
@@ -86,12 +86,12 @@ const heroResponseChips = [
 export default function ContactPage() {
   return (
     <div className="relative isolate overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(255,255,255,0.18)_0%,rgba(245,247,250,0.46)_24%,rgba(243,245,248,0.88)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(9,16,26,0.2)_0%,rgba(9,16,26,0.3)_24%,rgba(9,16,26,0.5)_100%)]" />
 
       <PageSection
         spacing="none"
         ariaLabelledby="contact-hero-title"
-        className="relative isolate overflow-hidden bg-transparent before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.94)_0%,rgba(251,246,247,0.88)_44%,rgba(242,246,250,0.74)_100%)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_22%_26%,rgba(255,255,255,0.72),transparent_32%),radial-gradient(circle_at_82%_24%,rgba(199,48,44,0.12),transparent_30%),radial-gradient(circle_at_72%_78%,rgba(15,33,59,0.04),transparent_24%),linear-gradient(90deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.03)_44%,rgba(255,255,255,0)_100%)]"
+        className="relative isolate overflow-hidden bg-transparent before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(9,16,26,0.95)_0%,rgba(15,23,41,0.9)_44%,rgba(9,16,26,0.92)_100%)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_22%_26%,rgba(15,23,41,0.6),transparent_32%),radial-gradient(circle_at_82%_24%,rgba(239,68,68,0.1),transparent_30%),radial-gradient(circle_at_72%_78%,rgba(59,130,246,0.04),transparent_24%),linear-gradient(90deg,rgba(255,255,255,0.03)_0%,rgba(255,255,255,0.01)_44%,rgba(255,255,255,0)_100%)]"
         containerClassName="relative inner-hero-wrap"
       >
         <div className="inner-hero-grid">
@@ -140,7 +140,7 @@ export default function ContactPage() {
                 {heroResponseChips.map((chip) => (
                   <span
                     key={chip}
-                    className="inline-flex items-center rounded-pill border border-white/85 bg-white/70 px-2.75 py-1.25 text-[0.7rem] font-semibold leading-5 text-brand-navy shadow-soft backdrop-blur-sm md:px-3 md:py-1.5 md:text-[0.72rem] lg:px-2.5 lg:py-1.25"
+                    className="inline-flex items-center rounded-pill border border-white/[0.1] bg-white/[0.06] px-2.75 py-1.25 text-[0.7rem] font-semibold leading-5 text-brand-ink shadow-soft backdrop-blur-sm md:px-3 md:py-1.5 md:text-[0.72rem] lg:px-2.5 lg:py-1.25"
                   >
                     {chip}
                   </span>
@@ -150,7 +150,7 @@ export default function ContactPage() {
           </div>
 
           <aside className="inner-hero-card">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,48,44,0.12),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.58),rgba(250,244,245,0.34))]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.08),transparent_34%),linear-gradient(180deg,rgba(15,23,41,0.4),rgba(9,16,26,0.2))]" />
             <div className="relative">
               <p className="inner-eyebrow">Quick contact</p>
 
@@ -216,19 +216,19 @@ export default function ContactPage() {
                     <CopyButton
                       value={siteConfig.contact.email}
                       label="email address"
-                      className="shrink-0 border-white/80 bg-white/[0.82] shadow-soft hover:bg-white"
+                      className="shrink-0 border-white/[0.08] bg-white/[0.04] shadow-soft hover:bg-white/[0.08]"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="mt-3.5 border-t border-white/75 pt-3">
+              <div className="mt-3.5 border-t border-white/[0.08] pt-3">
                 <p className="proof-line">Service areas</p>
                 <div className="mt-2.5 flex flex-wrap gap-1.5">
                   {siteConfig.serviceAreas.map((area) => (
                     <span
                       key={area}
-                      className="inline-flex items-center rounded-pill border border-white/82 bg-white/[0.76] px-2.25 py-1 text-[0.7rem] font-semibold text-brand-navy shadow-soft md:px-2.5 md:text-[0.72rem]"
+                      className="inline-flex items-center rounded-pill border border-white/[0.08] bg-white/[0.04] px-2.25 py-1 text-[0.7rem] font-semibold text-brand-ink shadow-soft md:px-2.5 md:text-[0.72rem]"
                     >
                       {area}
                     </span>
@@ -292,7 +292,7 @@ export default function ContactPage() {
                         <CopyButton
                           value={item.copyValue}
                           label={item.copyLabel}
-                          className="border-white/80 bg-white/[0.74] shadow-soft hover:bg-white"
+                          className="border-white/[0.08] bg-white/[0.04] shadow-soft hover:bg-white/[0.08]"
                         />
                       ) : null}
                       <ButtonLink
@@ -336,9 +336,9 @@ export default function ContactPage() {
                   </ButtonLink>
               </div>
 
-              <div className="relative mt-5 aspect-[16/10] max-h-[25rem] overflow-hidden rounded-[1.35rem] border border-white/80 bg-white shadow-soft lg:min-h-[22rem] lg:flex-1 lg:aspect-auto">
+              <div className="relative mt-5 aspect-[16/10] max-h-[25rem] overflow-hidden rounded-[1.35rem] border border-white/[0.08] bg-white/[0.04] shadow-soft lg:min-h-[22rem] lg:flex-1 lg:aspect-auto">
                 <iframe
-                  title="Map showing Manjalpur, Vadodara"
+                  title="Map showing the SKY PHLAME INNOVATION office in Manjalpur, Vadodara"
                   src={mapsEmbedUrl}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

@@ -29,9 +29,9 @@ export function PageIntro({
 }: PageIntroProps) {
   return (
     <section className={cn("relative isolate overflow-hidden bg-transparent", className)}>
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.94)_0%,rgba(251,246,247,0.88)_44%,rgba(242,246,250,0.74)_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_26%,rgba(255,255,255,0.72),transparent_32%),radial-gradient(circle_at_80%_28%,rgba(199,48,44,0.13),transparent_30%),radial-gradient(circle_at_72%_78%,rgba(15,33,59,0.045),transparent_24%)]" />
-      <div className="pointer-events-none absolute inset-0 hidden lg:block bg-[radial-gradient(circle_at_18%_24%,rgba(255,255,255,0.9),transparent_34%),radial-gradient(circle_at_84%_28%,rgba(199,48,44,0.14),transparent_28%),linear-gradient(90deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.02)_44%,rgba(255,255,255,0)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(9,16,26,0.95)_0%,rgba(15,23,41,0.9)_44%,rgba(9,16,26,0.92)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_26%,rgba(15,23,41,0.6),transparent_32%),radial-gradient(circle_at_80%_28%,rgba(239,68,68,0.1),transparent_30%),radial-gradient(circle_at_72%_78%,rgba(59,130,246,0.05),transparent_24%)]" />
+      <div className="pointer-events-none absolute inset-0 hidden lg:block bg-[radial-gradient(circle_at_18%_24%,rgba(15,23,41,0.5),transparent_34%),radial-gradient(circle_at_84%_28%,rgba(239,68,68,0.12),transparent_28%),linear-gradient(90deg,rgba(255,255,255,0.03)_0%,rgba(255,255,255,0.01)_44%,rgba(255,255,255,0)_100%)]" />
       <div
         className="pointer-events-none absolute inset-0 hidden opacity-[0.08] md:block md:opacity-[0.12] lg:opacity-[0.07]"
         style={{ backgroundImage: noiseTexture, backgroundSize: "160px 160px" }}
@@ -69,7 +69,7 @@ export function PageIntro({
                 {highlights.map((item) => (
                   <li
                     key={item}
-                    className="inline-flex items-center rounded-pill border border-white/85 bg-white/70 px-2.75 py-1.25 text-[0.7rem] font-semibold leading-5 text-brand-navy shadow-soft backdrop-blur-sm md:px-3 md:py-1.5 md:text-[0.72rem]"
+                    className="inline-flex items-center rounded-pill border border-white/[0.1] bg-white/[0.06] px-2.75 py-1.25 text-[0.7rem] font-semibold leading-5 text-brand-ink shadow-soft backdrop-blur-sm md:px-3 md:py-1.5 md:text-[0.72rem]"
                   >
                     {item}
                   </li>

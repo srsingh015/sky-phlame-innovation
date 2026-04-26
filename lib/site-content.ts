@@ -44,11 +44,13 @@ export const siteConfig = {
     tagline: "Leading Security & Fire Protection Services",
     positioning:
       "Fire alarm systems, surveillance, security systems, and AV solutions from an independent specialist based in Vadodara, Gujarat.",
-    headOffice: "Vadodara, Gujarat",
-    streetAddress: "D-1001, Manjalpur",
+    headOffice: "Manjalpur, Vadodara, Gujarat",
+    streetAddress:
+      "4F-407, Rama Emperro, Beside Shell Petrol Pump, Akashwani Road, Manjalpur",
     city: "Vadodara",
     region: "Gujarat",
-    addressDisplay: "D-1001, Manjalpur, Vadodara",
+    addressDisplay:
+      "4F-407, Rama Emperro, Beside Shell Petrol Pump, Akashwani Road, Manjalpur, Vadodara, Gujarat 390011",
   },
   contact: {
     phoneDisplay: "+91 6353984044",
@@ -228,7 +230,7 @@ export const services: Service[] = [
     ],
     ctaLabel: "WhatsApp for Quote",
     icon: "analytics",
-    bgHomeSrc: "/services/home/face-analytics.webp",
+    bgHomeSrc: "/services/home/face-analytics-v2.webp",
     bgServicesSrc: "/services/services/face-analytics.webp",
   },
   {
@@ -337,5 +339,9 @@ export const clients: Client[] = [
   {
     name: "Pidilite Industries",
     assetPath: "/clients/logos/pidilite-industries.png",
+  },
+  {
+    name: "astTECS",
+    assetPath: "/clients/logos/asttecs.png",
   },
 ];

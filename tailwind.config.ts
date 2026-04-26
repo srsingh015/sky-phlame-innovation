@@ -5,7 +5,7 @@ const config: Config = {
     extend: {
       maxWidth: {
         site: "78rem",
-        copy: "42rem",
+        copy: "46rem",
         narrow: "34rem",
       },
       borderRadius: {
@@ -17,36 +17,45 @@ const config: Config = {
         panel: "var(--shadow-panel)",
         lift: "var(--shadow-lift)",
         soft: "var(--shadow-soft)",
+        dark: "var(--shadow-dark)",
       },
       fontSize: {
         eyebrow: [
-          "0.72rem",
+          "0.74rem",
           {
             lineHeight: "1",
-            letterSpacing: "0.28em",
+            letterSpacing: "0.24em",
             fontWeight: "700",
           },
         ],
         "display-sm": [
-          "clamp(3rem, 6vw, 4.75rem)",
+          "clamp(2.75rem, 7vw, 5rem)",
           {
-            lineHeight: "0.96",
-            letterSpacing: "-0.04em",
+            lineHeight: "0.92",
+            letterSpacing: "-0.05em",
             fontWeight: "700",
           },
         ],
         "display-xs": [
-          "clamp(2.3rem, 4vw, 3.7rem)",
+          "clamp(2.25rem, 4.4vw, 4rem)",
           {
-            lineHeight: "1",
-            letterSpacing: "-0.035em",
+            lineHeight: "0.96",
+            letterSpacing: "-0.045em",
             fontWeight: "700",
           },
         ],
-        lead: [
-          "1.125rem",
+        "title-lg": [
+          "clamp(1.35rem, 2vw, 1.9rem)",
           {
-            lineHeight: "1.9",
+            lineHeight: "1.08",
+            letterSpacing: "-0.03em",
+            fontWeight: "600",
+          },
+        ],
+        lead: [
+          "clamp(1rem, 1.35vw, 1.14rem)",
+          {
+            lineHeight: "1.8",
           },
         ],
       },

@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
+
 import { useEffect, useState, type CSSProperties } from "react";
+import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
 import { IconCircle } from "@/components/icon-circle";
 import { ArrowRightIcon, ServiceIcon, WhatsAppIcon } from "@/components/icons";
@@ -41,7 +42,7 @@ export function ServiceCard({
   const bulletPoints = service.whatWeProvide.slice(0, 2);
   const imageSrc = bgImageSrc ?? service.bgHomeSrc;
   const [imageFailed, setImageFailed] = useState(false);
-  const showHoverBg = enableHoverBg && Boolean(imageSrc) && !imageFailed;
+  const showCardImage = enableHoverBg && Boolean(imageSrc) && !imageFailed;
   const { ref, isVisible } = useRevealOnce<HTMLElement>();
   const revealStyle = {
     "--reveal-delay-tablet": `${(revealIndex % 2) * 80}ms`,
@@ -58,68 +59,53 @@ export function ServiceCard({
     <article
       ref={ref}
       style={revealStyle}
-      className={`feature-card card-pad group relative isolate flex h-full flex-col overflow-hidden rounded-3xl border border-white/85 bg-white shadow-soft backdrop-blur-none opacity-0 translate-y-6 transition-[opacity,transform] duration-[550ms] ease-[cubic-bezier(0.4,0,0.2,1)] md:[transition-delay:var(--reveal-delay-tablet)] lg:[transition-delay:var(--reveal-delay-desktop)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+      className={`card-pad group relative isolate flex h-full min-h-[23.5rem] flex-col overflow-hidden rounded-3xl border border-white/12 bg-[#0f1729] opacity-0 translate-y-6 transition-all duration-[550ms] ease-[cubic-bezier(0.4,0,0.2,1)] md:min-h-[24rem] md:[transition-delay:var(--reveal-delay-tablet)] lg:[transition-delay:var(--reveal-delay-desktop)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none hover:border-white/40 hover:bg-[#131c33] ${
         isVisible ? "opacity-100 translate-y-0" : ""
-      } md:group-focus-within:bg-transparent lg:group-hover:bg-transparent lg:group-focus-within:bg-transparent lg:group-hover:shadow-[0_8px_32px_rgba(0,0,0,0.22)] lg:group-focus-within:shadow-[0_8px_32px_rgba(0,0,0,0.22)]`}
+      }`}
     >
-      {showHoverBg && imageSrc ? (
+      {showCardImage && imageSrc ? (
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
           <Image
             src={imageSrc}
-            alt=""
-            aria-hidden="true"
+            alt={service.name}
             fill
-            loading="lazy"
-            decoding="async"
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            quality={70}
-            className="h-full w-full object-cover object-center opacity-[0.10] transition-opacity duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] [will-change:opacity] [transform:translateZ(0)] [backface-visibility:hidden] motion-reduce:transition-none md:opacity-[0.10] lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-within:opacity-100"
-            onError={() => {
-              if (process.env.NODE_ENV !== "production") {
-                console.warn(
-                  `[ServiceCard] Failed to load bg image for ${service.slug}: ${imageSrc}`,
-                );
-              }
-              setImageFailed(true);
-            }}
+            className="object-cover opacity-30 transition-opacity duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:opacity-50"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(255,255,255,0.92)_0%,rgba(255,255,255,0.75)_100%)] opacity-100 lg:opacity-0" />
-          <div className="pointer-events-none absolute inset-0 z-10 hidden bg-[linear-gradient(to_top,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.45)_50%,rgba(0,0,0,0.15)_100%)] opacity-0 transition-opacity duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none lg:block lg:group-hover:opacity-100 lg:group-focus-within:opacity-100" />
+          <div className="service-card-overlay service-card-overlay-home absolute inset-0" />
         </div>
       ) : null}
 
-      <div className="relative z-20 flex items-center gap-3.5">
-        <IconCircle className="h-11 w-11 md:h-12 md:w-12">
+      <div className="relative z-30 flex items-center gap-3.5">
+        <IconCircle className="h-11 w-11 border-white/14 bg-white/12 text-white shadow-none backdrop-blur-sm md:h-12 md:w-12">
           <ServiceIcon
             name={service.icon}
             className="h-5 w-5 md:h-[1.35rem] md:w-[1.35rem]"
             aria-hidden="true"
           />
         </IconCircle>
-        <span className="rounded-pill border border-white/85 bg-brand-accent/85 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-brand-navy shadow-soft">
+        <span className="rounded-pill border border-white/18 bg-white/12 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-white shadow-soft backdrop-blur-sm">
           {categoryByIcon[service.icon]}
         </span>
       </div>
 
-      <h3 className="relative z-20 mt-5 text-xl font-semibold leading-snug text-balance text-brand-navy transition-colors duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] sm:text-[1.35rem] lg:group-hover:text-white lg:group-focus-within:text-white">
+      <h3 className="relative z-30 mt-5 text-xl font-semibold leading-snug text-balance text-white sm:text-[1.35rem]">
         {service.name}
       </h3>
 
-      <ul className="relative z-20 mt-4 grid gap-2 text-sm leading-6 text-brand-muted">
+      <ul className="relative z-30 mt-4 grid gap-2 text-sm leading-6 text-white/86">
         {bulletPoints.map((point) => (
           <li key={point} className="flex items-start gap-3">
             <CheckIcon
-              className="mt-1 h-4 w-4 shrink-0 text-brand-red"
+              className="mt-1 h-4 w-4 shrink-0 text-[#ff8577]"
               aria-hidden="true"
             />
-            <span className="transition-colors duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)] lg:group-hover:text-white/88 lg:group-focus-within:text-white/88">
-              {point}
-            </span>
+            <span>{point}</span>
           </li>
         ))}
       </ul>
 
-      <div className="relative z-20 mt-auto grid grid-cols-1 gap-2 pt-6 sm:grid-cols-[minmax(0,1fr)_auto]">
+      <div className="relative z-30 mt-auto grid grid-cols-1 gap-2 pt-6 sm:grid-cols-[minmax(0,1fr)_auto]">
         <ButtonLink
           href={buildServiceQuoteLink(service.name)}
           target="_blank"
@@ -136,7 +122,7 @@ export function ServiceCard({
           href={detailHref}
           variant="tertiary"
           size="sm"
-          className="px-4 sm:justify-self-start"
+          className="border-white/18 bg-white/10 px-4 text-white hover:border-white/28 hover:bg-white/16 sm:justify-self-start"
           aria-label={`${detailLabel} for ${service.name}`}
         >
           Explore

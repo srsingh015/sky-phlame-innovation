@@ -92,7 +92,7 @@ export default function ServicesPage() {
 
         <div className="section-stack space-y-4 md:space-y-6">
           {services.map((service) => (
-            <ServiceDetails key={service.slug} service={service} />
+            <ServiceDetails key={service.slug} service={service} defaultOpen />
           ))}
         </div>
       </PageSection>

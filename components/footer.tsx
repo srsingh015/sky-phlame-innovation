@@ -34,8 +34,10 @@ function FooterHeading({ children }: { children: ReactNode }) {
 
 export function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-brand-navy pb-[calc(var(--mobile-bar-h)+env(safe-area-inset-bottom))] text-white md:pb-0">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,48,44,0.12),transparent_24%),radial-gradient(circle_at_12%_18%,rgba(255,255,255,0.06),transparent_18%),linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0))]" />
+    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-brand-navy-deep pb-[calc(var(--mobile-bar-h)+env(safe-area-inset-bottom))] text-white md:pb-0">
+      {/* Glowing top accent line */}
+      <div className="pointer-events-none absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-brand-red/40 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,48,44,0.14),transparent_28%),radial-gradient(circle_at_12%_18%,rgba(255,255,255,0.06),transparent_18%),radial-gradient(circle_at_50%_80%,rgba(15,33,59,0.3),transparent_50%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0))]" />
 
       <h2 className="sr-only">Footer</h2>
 

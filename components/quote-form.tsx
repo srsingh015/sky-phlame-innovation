@@ -111,7 +111,7 @@ export function QuoteForm({
     "w-full rounded-2xl border px-4 py-3 text-sm outline-none transition",
     isDark
       ? "border-white/[0.15] bg-white/[0.08] text-white placeholder:text-white/[0.45]"
-      : "border-brand-border bg-white text-brand-navy placeholder:text-brand-muted/75",
+      : "border-white/[0.1] bg-white/[0.06] text-brand-ink placeholder:text-brand-muted/75",
   );
 
   const errorFieldClassName = isDark
@@ -143,7 +143,7 @@ export function QuoteForm({
         "grid gap-4 rounded-[1.75rem] border p-5 sm:grid-cols-2 md:p-6",
         isDark
           ? "border-white/[0.12] bg-white/[0.06] text-white"
-          : "border-white/80 bg-white/[0.86] text-brand-navy shadow-[0_24px_70px_-38px_rgba(15,33,59,0.35)] backdrop-blur-sm",
+          : "border-white/[0.1] bg-white/[0.04] text-brand-ink shadow-[0_24px_70px_-38px_rgba(0,0,0,0.5)] backdrop-blur-md",
         className,
       )}
     >

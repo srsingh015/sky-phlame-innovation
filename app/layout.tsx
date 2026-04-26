@@ -17,7 +17,7 @@ const inter = Inter({
 export const metadata: Metadata = homeMetadata;
 
 export const viewport: Viewport = {
-  themeColor: "#0f213b",
+  themeColor: "#09101a",
   width: "device-width",
   initialScale: 1,
 };
@@ -34,10 +34,10 @@ export default function RootLayout({
           Skip to content
         </a>
         <HashScroll />
-        <div className="relative flex min-h-screen flex-col overflow-x-hidden">
+        <div className="relative flex min-h-screen flex-col">
           <Header />
           <div className="flex flex-1 flex-col">
-            <main id="content" className="site-bg flex-1 overflow-x-clip">
+            <main id="content" className="site-bg flex-1">
               {children}
             </main>
             <Footer />

@@ -1,5 +1,11 @@
+"use client";
+
+import type { ReactNode } from "react";
+import Image from "next/image";
+import { LazyMotion, domAnimation, m, useReducedMotion } from "motion/react";
 import { ButtonLink } from "@/components/button-link";
 import { Container } from "@/components/container";
+import { HeroRotator } from "@/components/hero-rotator";
 import {
   CheckIcon,
   LocationIcon,
@@ -7,217 +13,642 @@ import {
   ServiceIcon,
   WhatsAppIcon,
 } from "@/components/icons";
-import { TrustBadges } from "@/components/trust-badges";
-import type { ReactNode } from "react";
-import { services, siteConfig } from "@/lib/site-content";
+import {
+  createRevealVariants,
+  motionHoverSpring,
+} from "@/lib/motion";
 import { buildPhoneHref, buildWhatsAppUrl } from "@/lib/site";
+import { services, siteConfig } from "@/lib/site-content";
 
 const whatsappHref = buildWhatsAppUrl({
   service: "a fire, security or AV solution",
 });
 
-const stats = [
+const callHref = buildPhoneHref();
+
+const proofMetrics = [
   {
     label: "Established",
     value: siteConfig.company.established,
+    detail: "Independent specialist support",
     icon: <CheckIcon className="h-4 w-4" aria-hidden="true" />,
   },
   {
-    label: "Support Areas",
-    value: String(siteConfig.serviceAreas.length),
+    label: "Coverage",
+    value: `${siteConfig.serviceAreas.length} cities`,
+    detail: siteConfig.serviceAreas.join(" • "),
     icon: <LocationIcon className="h-4 w-4" aria-hidden="true" />,
   },
   {
     label: "Core Solutions",
     value: String(services.length),
+    detail: "Fire, security, communication, and AV",
     icon: <ServiceIcon name="av" className="h-4 w-4" aria-hidden="true" />,
   },
 ];
 
-const rightPanelBullets = [
-  "Local coordination for survey, installation, and support follow-through.",
-  "Certified trained engineers and sales support for live sites.",
-  "Coverage across Vadodara, Bharuch, and Ankleshwar.",
+const heroFocusItems = [
+  "Fire Safety",
+  "Security Systems",
+  "Communication",
+  "AV Solutions",
 ];
 
-const noiseTexture =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='%230f213b' fill-opacity='.045'%3E%3Ccircle cx='12' cy='14' r='1'/%3E%3Ccircle cx='72' cy='28' r='1'/%3E%3Ccircle cx='112' cy='18' r='1'/%3E%3Ccircle cx='30' cy='62' r='1'/%3E%3Ccircle cx='92' cy='78' r='1'/%3E%3Ccircle cx='126' cy='110' r='1'/%3E%3Ccircle cx='54' cy='120' r='1'/%3E%3Ccircle cx='18' cy='104' r='1'/%3E%3C/g%3E%3C/svg%3E\")";
+const heroVisualService =
+  services.find((service) => service.slug === "fire-alarm-systems") ?? services[0];
 
-type HeroStatProps = {
+const heroSupportBadges = [
+  siteConfig.trustBadges[2]?.title,
+  siteConfig.howWeWork.join(" • "),
+  heroVisualService.highlight,
+].filter(Boolean);
+
+const mediaPoints = heroVisualService.whatWeProvide.slice(0, 2);
+
+const heroTitleGroups = splitHeroTitle(siteConfig.hero.title);
+
+const heroMotion = {
+  eyebrow: { delay: 0.08, y: 12, duration: 0.52, blur: 4 },
+  focusBadge: { delay: 0.18, y: 12, duration: 0.56, blur: 4 },
+  titleBaseDelay: 0.32,
+  titleStagger: 0.14,
+  title: { y: 24, duration: 0.72, blur: 6 },
+  paragraph: { delay: 0.78, y: 18, duration: 0.62, blur: 4 },
+  ctaBaseDelay: 0.94,
+  ctaStagger: 0.1,
+  cta: { y: 16, scale: 0.965, duration: 0.56, blur: 4 },
+  supportLabel: { delay: 1.14, y: 14, duration: 0.5, blur: 4 },
+  supportChipBaseDelay: 1.24,
+  supportChipStagger: 0.08,
+  supportChip: { y: 14, duration: 0.48, blur: 4 },
+  supportText: { delay: 1.44, y: 12, duration: 0.5, blur: 4 },
+  mediaPanel: { delay: 0.42, x: 32, y: 10, scale: 1.04, duration: 0.9, blur: 8 },
+  mediaChipBaseDelay: 1.02,
+  mediaChipStagger: 0.08,
+  mediaChip: { y: 14, duration: 0.5, blur: 4 },
+  mediaCopy: { delay: 1.18, y: 18, duration: 0.58, blur: 4 },
+  mediaPointBaseDelay: 1.3,
+  mediaPointStagger: 0.08,
+  mediaPoint: { y: 14, duration: 0.48, blur: 4 },
+  proofBand: { delay: 1.58, y: 28, duration: 0.84, blur: 6 },
+} as const;
+
+const ctaHoverShadow = "0 26px 48px -24px rgba(9, 21, 37, 0.28)";
+const ctaTapShadow = "0 12px 24px -20px rgba(9, 21, 37, 0.18)";
+const mediaHoverShadow = "0 40px 72px -36px rgba(9, 21, 37, 0.46)";
+const proofHoverShadow = "0 22px 40px -28px rgba(4, 12, 24, 0.38)";
+
+type ProofMetricProps = {
   label: string;
   value: string;
-  isWide?: boolean;
+  detail: string;
   icon: ReactNode;
 };
 
-function HeroStat({ label, value, isWide = false, icon }: HeroStatProps) {
+function splitHeroTitle(title: string) {
+  const compactTitle = title.replace(/\s+/g, " ").trim();
+
+  if (compactTitle.includes(" for ")) {
+    const [beforeFor, afterFor] = compactTitle.split(" for ");
+
+    if (beforeFor.includes(" & ")) {
+      const [first, second] = beforeFor.split(" & ");
+      return [first, `& ${second}`, `for ${afterFor}`];
+    }
+
+    return [beforeFor, `for ${afterFor}`];
+  }
+
+  const words = compactTitle.split(" ");
+
+  if (words.length <= 4) {
+    return [compactTitle];
+  }
+
+  const firstBreak = Math.ceil(words.length / 2);
+  return [words.slice(0, firstBreak).join(" "), words.slice(firstBreak).join(" ")];
+}
+
+function ProofMetric({ label, value, detail, icon }: ProofMetricProps) {
   return (
-    <div
-      className={[
-        "flex min-h-[4.3rem] items-center gap-2.5 rounded-[1.05rem] border border-white/80 bg-white/72 px-3.5 py-2.5 shadow-soft backdrop-blur-sm lg:min-h-[4.35rem] lg:gap-2.5 lg:px-4 lg:py-2.5",
-        isWide ? "col-span-2 sm:col-span-1" : "",
-      ].join(" ")}
-    >
-      <div className="flex h-8.5 w-8.5 shrink-0 items-center justify-center rounded-full border border-brand-border/80 bg-white text-brand-navy lg:h-9 lg:w-9">
-        {icon}
-      </div>
-      <div className="min-w-0">
-        <p className="text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-brand-muted">
-          {label}
-        </p>
-        <p className="mt-1 text-lg font-semibold leading-none text-brand-navy">
-          {value}
-        </p>
+    <div className="hero-proof-metric">
+      <div className="hero-proof-metric-icon">{icon}</div>
+      <div className="hero-proof-metric-copy">
+        <p className="hero-proof-metric-label">{label}</p>
+        <p className="hero-proof-metric-value">{value}</p>
+        <p className="hero-proof-metric-detail">{detail}</p>
       </div>
     </div>
   );
 }
 
 export function Hero() {
+  const prefersReducedMotion = useReducedMotion() ?? false;
+  const initial = prefersReducedMotion ? false : "hidden";
+
+  const reveal = ({
+    delay = 0,
+    x = 0,
+    y = 18,
+    scale = 1,
+    duration = 0.64,
+    blur = 6,
+  }: {
+    delay?: number;
+    x?: number;
+    y?: number;
+    scale?: number;
+    duration?: number;
+    blur?: number;
+  }) =>
+    createRevealVariants({
+      reduced: prefersReducedMotion,
+      x,
+      y,
+      scale,
+      delay,
+      duration,
+      blur,
+    });
+
   return (
-    <section className="relative isolate overflow-hidden bg-transparent">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.94)_0%,rgba(251,246,247,0.88)_44%,rgba(242,246,250,0.74)_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_26%,rgba(255,255,255,0.72),transparent_32%),radial-gradient(circle_at_80%_28%,rgba(199,48,44,0.13),transparent_30%),radial-gradient(circle_at_72%_78%,rgba(15,33,59,0.045),transparent_24%)]" />
-      <div className="pointer-events-none absolute inset-0 hidden lg:block bg-[radial-gradient(circle_at_18%_24%,rgba(255,255,255,0.9),transparent_34%),radial-gradient(circle_at_84%_28%,rgba(199,48,44,0.14),transparent_28%),linear-gradient(90deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.02)_44%,rgba(255,255,255,0)_100%)]" />
-      <div
-        className="pointer-events-none absolute inset-0 hidden opacity-[0.08] md:block md:opacity-[0.12] lg:opacity-[0.07]"
-        style={{ backgroundImage: noiseTexture, backgroundSize: "160px 160px" }}
-      />
-      <Container className="relative section-hero lg:min-h-[calc(90vh-var(--header-h))]">
-        <div className="lg:flex lg:min-h-[calc(90vh-var(--header-h)-2.5rem)] lg:flex-col">
-          <div className="grid items-start gap-5 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_minmax(380px,460px)] lg:gap-8 xl:gap-10">
-            <div className="max-w-[39rem] lg:max-w-[41rem]">
-            <p className="eyebrow max-w-[19rem] leading-[1.15] sm:max-w-[24rem]">
-              {siteConfig.hero.eyebrow}
-            </p>
-
-            <h1 className="mt-3 max-w-[12.4ch] text-[clamp(2.05rem,8vw,3rem)] font-semibold leading-[1.03] tracking-tight text-balance text-brand-navy md:mt-4 md:max-w-[13ch] md:text-[clamp(2.35rem,4.4vw,3.45rem)] md:leading-[1.02] lg:max-w-[14ch] lg:text-[clamp(2.8rem,3.25vw,3.65rem)] lg:leading-[1]">
-              {siteConfig.hero.title}
-            </h1>
-
-            <p className="mt-3.5 max-w-[30rem] text-[0.98rem] leading-7 text-brand-muted md:mt-4 md:max-w-[34rem] md:text-lg md:leading-8 lg:max-w-[36rem] lg:text-[1.02rem] lg:leading-7 lg:text-brand-navy/72">
-              {siteConfig.hero.subhead}
-            </p>
-
-            <div className="mt-5 flex flex-col gap-3 lg:max-w-[38rem]">
-              <div className="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center lg:gap-3.5">
-                <ButtonLink
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  variant="whatsapp"
-                  size="lg"
-                  block
-                  className="min-h-11 sm:min-h-12 sm:w-auto"
-                  aria-label="WhatsApp SKY PHLAME INNOVATION for a quote"
+    <LazyMotion features={domAnimation}>
+      <section className="hero-home-section">
+        <Container className="hero-home-wrap">
+          <m.div className="hero-home-main" initial={initial} animate="show">
+            <div className="hero-home-content">
+              <div className="hero-home-copy">
+                <m.p
+                  className="eyebrow hero-home-eyebrow"
+                  variants={reveal(heroMotion.eyebrow)}
                 >
-                  <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
-                  WhatsApp Now
-                </ButtonLink>
-                <ButtonLink
-                  href={buildPhoneHref()}
-                  variant="secondary"
-                  size="lg"
-                  block
-                  className="min-h-11 sm:min-h-12 sm:w-auto"
-                  aria-label="Call SKY PHLAME INNOVATION"
+                  {siteConfig.hero.eyebrow}
+                </m.p>
+
+                <m.div variants={reveal(heroMotion.focusBadge)}>
+                  <HeroRotator items={heroFocusItems} />
+                </m.div>
+
+                <h1 className="hero-home-title">
+                  {heroTitleGroups.map((group, index) => (
+                    <span className="hero-home-title-line" key={group}>
+                      <m.span
+                        className="hero-home-title-text"
+                        variants={reveal({
+                          delay:
+                            heroMotion.titleBaseDelay + index * heroMotion.titleStagger,
+                          y: heroMotion.title.y,
+                          duration: heroMotion.title.duration,
+                          blur: heroMotion.title.blur,
+                        })}
+                      >
+                        {group}
+                      </m.span>
+                    </span>
+                  ))}
+                </h1>
+
+                <m.p className="hero-home-lead" variants={reveal(heroMotion.paragraph)}>
+                  {siteConfig.hero.subhead}
+                </m.p>
+
+                <div className="hero-home-actions">
+                  <m.div
+                    className="hero-home-action-shell"
+                    variants={reveal({
+                      delay: heroMotion.ctaBaseDelay,
+                      y: heroMotion.cta.y,
+                      scale: heroMotion.cta.scale,
+                      duration: heroMotion.cta.duration,
+                      blur: heroMotion.cta.blur,
+                    })}
+                    whileHover={
+                      prefersReducedMotion
+                        ? undefined
+                        : { y: -6, scale: 1.02, boxShadow: ctaHoverShadow }
+                    }
+                    whileTap={
+                      prefersReducedMotion
+                        ? undefined
+                        : { y: -1, scale: 0.985, boxShadow: ctaTapShadow }
+                    }
+                    transition={motionHoverSpring}
+                    style={{ willChange: "transform, box-shadow" }}
+                  >
+                    <ButtonLink
+                      href={whatsappHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      variant="whatsapp"
+                      size="lg"
+                      className="min-h-12 sm:min-h-12"
+                      aria-label="WhatsApp SKY PHLAME INNOVATION for a quote"
+                    >
+                      <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
+                      WhatsApp Now
+                    </ButtonLink>
+                  </m.div>
+
+                  <m.div
+                    className="hero-home-action-shell"
+                    variants={reveal({
+                      delay: heroMotion.ctaBaseDelay + heroMotion.ctaStagger,
+                      y: heroMotion.cta.y,
+                      scale: heroMotion.cta.scale,
+                      duration: heroMotion.cta.duration,
+                      blur: heroMotion.cta.blur,
+                    })}
+                    whileHover={
+                      prefersReducedMotion
+                        ? undefined
+                        : { y: -5, scale: 1.016, boxShadow: ctaHoverShadow }
+                    }
+                    whileTap={
+                      prefersReducedMotion
+                        ? undefined
+                        : { y: -1, scale: 0.985, boxShadow: ctaTapShadow }
+                    }
+                    transition={motionHoverSpring}
+                    style={{ willChange: "transform, box-shadow" }}
+                  >
+                    <ButtonLink
+                      href={callHref}
+                      variant="secondary"
+                      size="lg"
+                      className="min-h-12 sm:min-h-12"
+                      aria-label="Call SKY PHLAME INNOVATION"
+                    >
+                      <PhoneIcon className="h-4 w-4" aria-hidden="true" />
+                      Call Now
+                    </ButtonLink>
+                  </m.div>
+
+                  <m.div
+                    className="hero-home-action-shell"
+                    variants={reveal({
+                      delay: heroMotion.ctaBaseDelay + heroMotion.ctaStagger * 2,
+                      y: heroMotion.cta.y,
+                      scale: heroMotion.cta.scale,
+                      duration: heroMotion.cta.duration,
+                      blur: heroMotion.cta.blur,
+                    })}
+                    whileHover={
+                      prefersReducedMotion
+                        ? undefined
+                        : { y: -4, scale: 1.014, boxShadow: ctaHoverShadow }
+                    }
+                    whileTap={
+                      prefersReducedMotion
+                        ? undefined
+                        : { y: -1, scale: 0.985, boxShadow: ctaTapShadow }
+                    }
+                    transition={motionHoverSpring}
+                    style={{ willChange: "transform, box-shadow" }}
+                  >
+                    <ButtonLink
+                      href="/contact#get-quote"
+                      variant="tertiary"
+                      size="lg"
+                      className="min-h-12 sm:min-h-12"
+                    >
+                      Get Quote
+                    </ButtonLink>
+                  </m.div>
+                </div>
+
+                <div className="hero-home-meta">
+                  <div className="hero-home-coverage">
+                    <m.div
+                      className="hero-home-coverage-label"
+                      variants={reveal(heroMotion.supportLabel)}
+                    >
+                      <LocationIcon className="h-4 w-4" aria-hidden="true" />
+                      <span>Local support</span>
+                    </m.div>
+
+                    <div className="hero-home-coverage-cities">
+                      {siteConfig.serviceAreas.map((area, index) => (
+                        <m.span
+                          key={area}
+                          className="hero-home-city-chip"
+                          variants={reveal({
+                            delay:
+                              heroMotion.supportChipBaseDelay +
+                              index * heroMotion.supportChipStagger,
+                            y: heroMotion.supportChip.y,
+                            duration: heroMotion.supportChip.duration,
+                            blur: heroMotion.supportChip.blur,
+                          })}
+                          whileHover={
+                            prefersReducedMotion
+                              ? undefined
+                              : { y: -2, scale: 1.01 }
+                          }
+                          transition={motionHoverSpring}
+                          style={{ willChange: "transform" }}
+                        >
+                          {area}
+                        </m.span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <m.p
+                    className="hero-home-support-note"
+                    variants={reveal(heroMotion.supportText)}
+                  >
+                    Survey, design, installation, and support through one local
+                    workflow.
+                  </m.p>
+                </div>
+              </div>
+            </div>
+
+            <m.div
+              className="hero-home-media"
+              variants={reveal(heroMotion.mediaPanel)}
+            >
+              <m.div
+                className="hero-home-media-stage"
+                whileHover={
+                  prefersReducedMotion
+                    ? undefined
+                    : {
+                        y: -7,
+                        scale: 1.016,
+                        boxShadow: mediaHoverShadow,
+                      }
+                }
+                transition={motionHoverSpring}
+                style={{ willChange: "transform, box-shadow" }}
+              >
+                <m.div
+                  className="hero-home-media-image"
+                  animate={
+                    prefersReducedMotion
+                      ? undefined
+                      : {
+                          scale: [1.02, 1.055, 1.02],
+                          x: [0, -6, 0],
+                          y: [0, 4, 0],
+                        }
+                  }
+                  transition={
+                    prefersReducedMotion
+                      ? undefined
+                      : {
+                          duration: 18,
+                          repeat: Infinity,
+                          repeatType: "mirror",
+                          ease: "easeInOut",
+                        }
+                  }
+                  style={{ willChange: "transform" }}
                 >
-                  <PhoneIcon className="h-4 w-4" aria-hidden="true" />
-                  Call Now
-                </ButtonLink>
-                <ButtonLink
-                  href="/contact#get-quote"
-                  variant="tertiary"
-                  size="lg"
-                  block
-                  className="min-h-11 sm:min-h-12 sm:w-auto"
+                  <Image
+                    src={heroVisualService.bgHomeSrc ?? siteConfig.assets.openGraph}
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 54vw"
+                    className="object-cover object-center"
+                  />
+                </m.div>
+
+                <m.div
+                  className="hero-home-media-glow hero-home-media-glow-a"
+                  animate={
+                    prefersReducedMotion
+                      ? undefined
+                      : {
+                          x: [0, 12, 0],
+                          y: [0, -10, 0],
+                          scale: [1, 1.08, 1],
+                        }
+                  }
+                  transition={
+                    prefersReducedMotion
+                      ? undefined
+                      : {
+                          duration: 12,
+                          repeat: Infinity,
+                          repeatType: "mirror",
+                          ease: "easeInOut",
+                        }
+                  }
+                />
+
+                <m.div
+                  className="hero-home-media-glow hero-home-media-glow-b"
+                  animate={
+                    prefersReducedMotion
+                      ? undefined
+                      : {
+                          x: [0, -10, 0],
+                          y: [0, 8, 0],
+                          scale: [1, 1.06, 1],
+                        }
+                  }
+                  transition={
+                    prefersReducedMotion
+                      ? undefined
+                      : {
+                          duration: 14,
+                          delay: 0.6,
+                          repeat: Infinity,
+                          repeatType: "mirror",
+                          ease: "easeInOut",
+                        }
+                  }
+                />
+
+                <m.div
+                  className="hero-home-media-top"
                 >
-                  Get Quote
-                </ButtonLink>
+                  <m.span
+                    className="hero-home-media-chip hero-home-media-chip-dark"
+                    variants={reveal({
+                      delay: heroMotion.mediaChipBaseDelay,
+                      y: heroMotion.mediaChip.y,
+                      duration: heroMotion.mediaChip.duration,
+                      blur: heroMotion.mediaChip.blur,
+                    })}
+                    animate={
+                      prefersReducedMotion
+                        ? undefined
+                        : { y: [0, -4, 0], x: [0, 3, 0] }
+                    }
+                    transition={
+                      prefersReducedMotion
+                        ? undefined
+                        : {
+                            duration: 7.5,
+                            delay: 0.8,
+                            repeat: Infinity,
+                            repeatType: "mirror",
+                            ease: "easeInOut",
+                          }
+                    }
+                    style={{ willChange: "transform" }}
+                  >
+                    Fire, Security & AV
+                  </m.span>
+
+                  <m.span
+                    className="hero-home-media-chip"
+                    variants={reveal({
+                      delay:
+                        heroMotion.mediaChipBaseDelay + heroMotion.mediaChipStagger,
+                      y: heroMotion.mediaChip.y,
+                      duration: heroMotion.mediaChip.duration,
+                      blur: heroMotion.mediaChip.blur,
+                    })}
+                    animate={
+                      prefersReducedMotion
+                        ? undefined
+                        : { y: [0, -3, 0], x: [0, -2, 0] }
+                    }
+                    transition={
+                      prefersReducedMotion
+                        ? undefined
+                        : {
+                            duration: 8.2,
+                            delay: 1.1,
+                            repeat: Infinity,
+                            repeatType: "mirror",
+                            ease: "easeInOut",
+                          }
+                    }
+                    style={{ willChange: "transform" }}
+                  >
+                    Site-ready execution
+                  </m.span>
+                </m.div>
+
+                <m.div
+                  className="hero-home-media-bottom"
+                >
+                  <m.div
+                    className="hero-home-media-copy"
+                    variants={reveal(heroMotion.mediaCopy)}
+                  >
+                    <p className="hero-home-media-kicker">
+                      {heroVisualService.highlight}
+                    </p>
+                    <h2>{heroVisualService.name}</h2>
+                    <p>{heroVisualService.shortDescription}</p>
+                  </m.div>
+
+                  <m.ul
+                    className="hero-home-media-points"
+                  >
+                    {mediaPoints.map((point, index) => (
+                      <m.li
+                        key={point}
+                        variants={reveal({
+                          delay:
+                            heroMotion.mediaPointBaseDelay +
+                            index * heroMotion.mediaPointStagger,
+                          y: heroMotion.mediaPoint.y,
+                          duration: heroMotion.mediaPoint.duration,
+                          blur: heroMotion.mediaPoint.blur,
+                        })}
+                        whileHover={
+                          prefersReducedMotion
+                            ? undefined
+                            : {
+                                x: 3,
+                              }
+                        }
+                        transition={motionHoverSpring}
+                      >
+                        <CheckIcon
+                          className="h-4 w-4 shrink-0 text-[#ff8f7a]"
+                          aria-hidden="true"
+                        />
+                        <span>{point}</span>
+                      </m.li>
+                    ))}
+                  </m.ul>
+                </m.div>
+              </m.div>
+            </m.div>
+          </m.div>
+
+          <m.div
+            className="hero-proof-band"
+            initial={initial}
+            animate="show"
+            variants={reveal(heroMotion.proofBand)}
+          >
+            <div className="hero-proof-metrics">
+              {proofMetrics.map((metric) => (
+                <m.div
+                  key={metric.label}
+                  className="hero-proof-metric-shell"
+                  whileHover={
+                    prefersReducedMotion
+                      ? undefined
+                      : {
+                          y: -4,
+                          scale: 1.01,
+                          boxShadow: proofHoverShadow,
+                        }
+                  }
+                  transition={motionHoverSpring}
+                  style={{ willChange: "transform, box-shadow" }}
+                >
+                  <ProofMetric
+                    label={metric.label}
+                    value={metric.value}
+                    detail={metric.detail}
+                    icon={metric.icon}
+                  />
+                </m.div>
+              ))}
+            </div>
+
+            <div className="hero-proof-support">
+              <p className="hero-proof-support-label">
+                Support model
+              </p>
+
+              <div className="hero-proof-area-row">
+                {siteConfig.serviceAreas.map((area) => (
+                  <m.span
+                    key={area}
+                    className="hero-proof-area-chip"
+                    whileHover={
+                      prefersReducedMotion ? undefined : { y: -2, scale: 1.01 }
+                    }
+                    transition={motionHoverSpring}
+                    style={{ willChange: "transform" }}
+                  >
+                    {area}
+                  </m.span>
+                ))}
               </div>
 
-              <div className="flex flex-wrap gap-1.5 lg:max-w-[36rem] lg:gap-1.5">
-                {siteConfig.trustBadges.map((badge) => (
-                  <span
-                    key={badge.title}
-                    className="inline-flex items-center rounded-full border border-white/85 bg-white/70 px-2.75 py-1.25 text-[0.7rem] font-semibold leading-5 text-brand-navy shadow-soft backdrop-blur-sm md:px-3 md:py-1.5 md:text-[0.72rem] lg:px-2.5 lg:py-1.25"
+              <div className="hero-proof-tag-row">
+                {heroSupportBadges.map((item) => (
+                  <m.span
+                    key={item}
+                    className="hero-proof-tag"
+                    whileHover={
+                      prefersReducedMotion ? undefined : { y: -2, scale: 1.01 }
+                    }
+                    transition={motionHoverSpring}
+                    style={{ willChange: "transform" }}
                   >
-                    {badge.title}
-                  </span>
+                    {item}
+                  </m.span>
                 ))}
               </div>
             </div>
-
-            <div className="mt-4 grid gap-2.5 sm:grid-cols-3 lg:max-w-[38rem] lg:grid-cols-3 lg:gap-4">
-              {stats.map((stat, index) => (
-                <HeroStat
-                  key={stat.label}
-                  label={stat.label}
-                  value={stat.value}
-                  icon={stat.icon}
-                  isWide={index === 2}
-                />
-              ))}
-            </div>
-            </div>
-
-            <aside className="relative overflow-hidden rounded-[1.55rem] border border-white/80 bg-white/68 p-4 shadow-lift backdrop-blur-md sm:p-5 lg:self-start lg:rounded-[1.8rem] lg:p-6">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(199,48,44,0.12),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.58),rgba(250,244,245,0.42))]" />
-
-              <div className="relative">
-                <div className="flex flex-wrap items-center gap-1.5 lg:gap-1.5">
-                  <span className="rounded-pill bg-brand-navy px-2.5 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-white">
-                    Local support
-                  </span>
-                  <span className="rounded-pill border border-brand-border/80 bg-white/80 px-2.5 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-brand-muted">
-                    Honeywell-integrated systems
-                  </span>
-                </div>
-
-                <h2 className="mt-3 max-w-[14ch] text-[1.28rem] font-semibold leading-[1.08] tracking-tight text-balance text-brand-navy sm:text-[1.55rem] lg:mt-3.5 lg:max-w-[13ch] lg:text-[1.55rem]">
-                  Fast response for fire, security, and AV requirements.
-                </h2>
-
-                <p className="mt-2.5 max-w-prose text-sm leading-6 text-brand-muted lg:mt-2.5 lg:max-w-[25rem]">
-                  Consultancy, implementation, and dependable support for
-                  industrial, commercial, and residential environments.
-                </p>
-
-                <ul className="mt-3.5 grid gap-2 text-sm leading-6 text-brand-muted lg:mt-3 lg:gap-2">
-                  {rightPanelBullets.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <CheckIcon
-                        className="mt-1 h-4 w-4 shrink-0 text-brand-red"
-                        aria-hidden="true"
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-3.5 flex flex-wrap gap-1.5 lg:mt-3.5 lg:flex-nowrap lg:gap-1.5">
-                  <span className="rounded-full border border-brand-border/80 bg-white/78 px-2.5 py-1.25 text-[0.7rem] font-semibold text-brand-navy md:px-3 md:py-1.5 md:text-[0.72rem]">
-                    Industrial
-                  </span>
-                  <span className="rounded-full border border-brand-border/80 bg-white/78 px-2.5 py-1.25 text-[0.7rem] font-semibold text-brand-navy md:px-3 md:py-1.5 md:text-[0.72rem]">
-                    Commercial
-                  </span>
-                  <span className="rounded-full border border-brand-border/80 bg-white/78 px-2.5 py-1.25 text-[0.7rem] font-semibold text-brand-navy md:px-3 md:py-1.5 md:text-[0.72rem]">
-                    Residential
-                  </span>
-                </div>
-              </div>
-            </aside>
-          </div>
-
-          <div className="hidden lg:block">
-            <div className="mt-8 h-px bg-[linear-gradient(90deg,rgba(190,200,214,0),rgba(190,200,214,0.92)_14%,rgba(190,200,214,0.92)_86%,rgba(190,200,214,0))]" />
-            <div className="pt-6">
-              <TrustBadges compactDesktop />
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
+          </m.div>
+        </Container>
+      </section>
+    </LazyMotion>
   );
 }
