@@ -58,10 +58,10 @@ export function HomeAboutSection() {
       containerClassName="relative"
     >
       <div className="section-shell">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 items-stretch">
           
           {/* Left Column: Text & Buttons */}
-          <div className="lg:col-span-7 flex flex-col justify-center lg:pr-8 py-4">
+          <div className="lg:col-span-7 flex flex-col justify-center lg:pr-8 py-2 sm:py-4">
             <SectionHeading
               id="home-about-heading"
               eyebrow="About Us"
@@ -69,13 +69,13 @@ export function HomeAboutSection() {
               description="SKY PHLAME INNOVATION supports industrial, commercial, and residential projects with practical planning, disciplined installation coordination, and support that stays close after handover."
             />
 
-            <div className="mt-6 max-w-[65ch] space-y-4 text-[0.85rem] leading-6 text-brand-muted md:text-[0.95rem] md:leading-7">
+            <div className="mt-4 max-w-[65ch] space-y-3 text-[0.8rem] leading-[1.65] text-brand-muted sm:mt-6 sm:space-y-4 sm:text-[0.85rem] sm:leading-6 md:text-[0.95rem] md:leading-7">
               {aboutOverview.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-1.5 sm:mt-6 sm:gap-2">
               {siteConfig.about.coreValues.map((value) => (
                 <span key={value} className="chip">
                   {value}
@@ -84,7 +84,7 @@ export function HomeAboutSection() {
               <span className="chip">{siteConfig.company.headOffice}</span>
             </div>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-5 flex flex-col gap-2.5 sm:mt-7 sm:flex-row sm:flex-wrap sm:gap-3">
               <ButtonLink href="/about" variant="primary" size="lg" className="w-full sm:w-auto">
                 Learn About Us
                 <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />

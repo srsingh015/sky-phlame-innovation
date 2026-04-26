@@ -59,7 +59,7 @@ export function ServiceCard({
     <article
       ref={ref}
       style={revealStyle}
-      className={`card-pad group relative isolate flex h-full min-h-[23.5rem] flex-col overflow-hidden rounded-3xl border border-white/12 bg-[#0f1729] opacity-0 translate-y-6 transition-all duration-[550ms] ease-[cubic-bezier(0.4,0,0.2,1)] md:min-h-[24rem] md:[transition-delay:var(--reveal-delay-tablet)] lg:[transition-delay:var(--reveal-delay-desktop)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none hover:border-white/40 hover:bg-[#131c33] ${
+      className={`card-pad group relative isolate flex h-full min-h-[20rem] flex-col overflow-hidden rounded-2xl border border-white/12 bg-[#0f1729] opacity-0 translate-y-6 transition-all duration-[550ms] ease-[cubic-bezier(0.4,0,0.2,1)] sm:min-h-[22rem] sm:rounded-3xl md:min-h-[24rem] md:[transition-delay:var(--reveal-delay-tablet)] lg:[transition-delay:var(--reveal-delay-desktop)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none hover:border-white/40 hover:bg-[#131c33] ${
         isVisible ? "opacity-100 translate-y-0" : ""
       }`}
     >
@@ -76,24 +76,24 @@ export function ServiceCard({
         </div>
       ) : null}
 
-      <div className="relative z-30 flex items-center gap-3.5">
-        <IconCircle className="h-11 w-11 border-white/14 bg-white/12 text-white shadow-none backdrop-blur-sm md:h-12 md:w-12">
+      <div className="relative z-30 flex items-center gap-3">
+        <IconCircle className="h-10 w-10 border-white/14 bg-white/12 text-white shadow-none backdrop-blur-sm sm:h-11 sm:w-11 md:h-12 md:w-12">
           <ServiceIcon
             name={service.icon}
-            className="h-5 w-5 md:h-[1.35rem] md:w-[1.35rem]"
+            className="h-4 w-4 sm:h-5 sm:w-5 md:h-[1.35rem] md:w-[1.35rem]"
             aria-hidden="true"
           />
         </IconCircle>
-        <span className="rounded-pill border border-white/18 bg-white/12 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-white shadow-soft backdrop-blur-sm">
+        <span className="rounded-pill border border-white/18 bg-white/12 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white shadow-soft backdrop-blur-sm sm:px-3 sm:py-1.5 sm:text-[0.68rem]">
           {categoryByIcon[service.icon]}
         </span>
       </div>
 
-      <h3 className="relative z-30 mt-5 text-xl font-semibold leading-snug text-balance text-white sm:text-[1.35rem]">
+      <h3 className="relative z-30 mt-4 text-lg font-semibold leading-snug text-balance text-white sm:mt-5 sm:text-xl">
         {service.name}
       </h3>
 
-      <ul className="relative z-30 mt-4 grid gap-2 text-sm leading-6 text-white/86">
+      <ul className="relative z-30 mt-3 grid gap-1.5 text-[0.8rem] leading-[1.6] text-white/86 sm:mt-4 sm:gap-2 sm:text-sm sm:leading-6">
         {bulletPoints.map((point) => (
           <li key={point} className="flex items-start gap-3">
             <CheckIcon
@@ -105,7 +105,7 @@ export function ServiceCard({
         ))}
       </ul>
 
-      <div className="relative z-30 mt-auto grid grid-cols-1 gap-2 pt-6 sm:grid-cols-[minmax(0,1fr)_auto]">
+      <div className="relative z-30 mt-auto grid grid-cols-[minmax(0,1fr)_auto] gap-2 pt-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:pt-6">
         <ButtonLink
           href={buildServiceQuoteLink(service.name)}
           target="_blank"

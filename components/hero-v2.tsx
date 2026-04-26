@@ -145,12 +145,12 @@ export function HeroV2() {
       </div>
 
       <Container className="relative z-10 flex min-h-[calc(100svh-var(--header-h))] flex-col">
-        <div className="flex items-center justify-end gap-4 pt-5 sm:pt-6 lg:pt-8">
+        <div className="flex items-center justify-end gap-3 pt-3 sm:pt-6 lg:pt-8">
           <div className="flex items-center gap-2">
             <button
               type="button"
               onClick={() => shiftSlide(-1)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/18 bg-black/12 text-white transition hover:bg-black/22"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/18 bg-black/12 text-white transition hover:bg-black/22 sm:h-10 sm:w-10"
               aria-label="Previous hero slide"
             >
               <ArrowRightIcon
@@ -158,13 +158,13 @@ export function HeroV2() {
                 aria-hidden="true"
               />
             </button>
-            <span className="inline-flex min-w-[3.6rem] items-center justify-center rounded-full border border-white/14 bg-black/12 px-3 py-2 text-sm font-medium text-white/88">
+            <span className="inline-flex min-w-[3rem] items-center justify-center rounded-full border border-white/14 bg-black/12 px-2.5 py-1.5 text-xs font-medium text-white/88 sm:min-w-[3.6rem] sm:px-3 sm:py-2 sm:text-sm">
               {activeIndex + 1} / {heroSlides.length}
             </span>
             <button
               type="button"
               onClick={() => shiftSlide(1)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/18 bg-black/12 text-white transition hover:bg-black/22"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/18 bg-black/12 text-white transition hover:bg-black/22 sm:h-10 sm:w-10"
               aria-label="Next hero slide"
             >
               <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
@@ -172,21 +172,21 @@ export function HeroV2() {
           </div>
         </div>
 
-        <div className="grid flex-1 items-center gap-10 py-8 sm:py-10 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:gap-12 lg:py-10">
+        <div className="grid flex-1 items-center gap-6 py-6 sm:gap-10 sm:py-10 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:gap-12 lg:py-10">
           <div className="max-w-[40rem]">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/72">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/72 sm:text-sm">
               {activeSlide.label}
             </p>
 
-            <h1 className="mt-4 max-w-[11ch] text-[clamp(2rem,6vw,4.5rem)] font-semibold leading-[1] sm:leading-[0.9] tracking-[-0.06em] text-balance text-white">
+            <h1 className="mt-3 max-w-[11ch] text-[clamp(1.75rem,6vw,4.5rem)] font-semibold leading-[1] sm:mt-4 sm:leading-[0.9] tracking-[-0.06em] text-balance text-white">
               {activeSlide.title}
             </h1>
 
-            <p className="mt-4 max-w-[36rem] text-[0.85rem] leading-6 text-white/78 sm:mt-5 sm:text-[0.95rem] sm:leading-7">
+            <p className="mt-3 max-w-[36rem] text-[0.8rem] leading-[1.6] text-white/78 sm:mt-5 sm:text-[0.95rem] sm:leading-7">
               {activeSlide.description}
             </p>
 
-            <div className="mt-6 flex flex-row flex-wrap gap-3 sm:mt-7">
+            <div className="mt-5 flex flex-row flex-wrap gap-2.5 sm:mt-7 sm:gap-3">
               <ButtonLink
                 href={whatsappHref}
                 target="_blank"
@@ -209,7 +209,7 @@ export function HeroV2() {
               </ButtonLink>
             </div>
 
-            <div className="mt-6 flex flex-col gap-2 text-[0.8rem] text-white/66 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 sm:text-sm">
+            <div className="mt-4 hidden flex-col gap-2 text-[0.8rem] text-white/66 sm:mt-7 sm:flex sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 sm:text-sm">
               <span>{serviceAreasLabel}</span>
               <span className="hidden text-white/34 sm:inline">•</span>
               <span>Survey to support</span>

@@ -44,7 +44,7 @@ export function SectionHeading({
           "mt-2 text-balance font-semibold tracking-tight text-brand-ink",
           size === "page"
             ? "text-display-xs"
-            : "text-[clamp(1.5rem,4vw,2.75rem)] leading-[1.05] sm:leading-[1.05] tracking-tight",
+            : "text-[clamp(1.35rem,4vw,2.75rem)] leading-[1.1] sm:leading-[1.05] tracking-tight",
           isCentered && "mx-auto",
           titleClassName,
         )}
@@ -54,7 +54,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            "mt-3 sm:mt-4 text-[0.85rem] leading-6 text-brand-muted sm:text-[0.95rem] sm:leading-7",
+            "mt-2 sm:mt-4 text-[0.8rem] leading-[1.65] text-brand-muted sm:text-[0.85rem] sm:leading-6 md:text-[0.95rem] md:leading-7",
             isCentered ? "mx-auto max-w-[52rem]" : "max-w-[48rem]",
             size === "page" && "max-w-prose",
             descriptionClassName,
