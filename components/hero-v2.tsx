@@ -145,11 +145,7 @@ export function HeroV2() {
       </div>
 
       <Container className="relative z-10 flex min-h-[calc(100svh-var(--header-h))] flex-col">
-        <div className="flex items-center justify-between gap-4 pt-5 sm:pt-6 lg:pt-8">
-          <p className="max-w-[18rem] text-[0.68rem] font-semibold uppercase tracking-[0.26em] text-white/72 sm:max-w-none sm:text-[0.72rem]">
-            {siteConfig.hero.eyebrow}
-          </p>
-
+        <div className="flex items-center justify-end gap-4 pt-5 sm:pt-6 lg:pt-8">
           <div className="flex items-center gap-2">
             <button
               type="button"
