@@ -3,6 +3,7 @@ import { FAQSection } from "@/components/faq-section";
 import { ClientsStrip } from "@/components/clients-strip";
 import { HeroV2 } from "@/components/hero-v2";
 import { HomeAboutSection } from "@/components/home-about-section";
+import { PlatinumPartnerSection } from "@/components/platinum-partner-section";
 import { HomeServicesSection } from "@/components/home-services-section";
 import { IconCircle } from "@/components/icon-circle";
 import {
@@ -40,6 +41,10 @@ export default function Home() {
 
       <Reveal duration={0.8} y={40}>
         <HomeAboutSection />
+      </Reveal>
+
+      <Reveal duration={0.8} y={40} amount="some">
+        <PlatinumPartnerSection />
       </Reveal>
 
       <PageSection
