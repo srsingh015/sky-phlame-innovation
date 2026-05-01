@@ -5,6 +5,8 @@ import { Reveal } from "@/components/reveal";
 import { IconCircle } from "@/components/icon-circle";
 import { CheckIcon, ServiceIcon } from "@/components/icons";
 
+import Image from "next/image";
+
 export function PlatinumPartnerSection() {
   return (
     <PageSection
@@ -43,11 +45,11 @@ export function PlatinumPartnerSection() {
                 id="platinum-partner-heading"
                 className="mt-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl leading-[1.1]"
               >
-                Official Platinum Partner for Gujarat
+                Official astTECS Platinum Partner for Gujarat
               </h2>
               
               <p className="mt-5 text-base leading-relaxed text-[#94a3b8] sm:text-lg">
-                SKY PHLAME INNOVATION is proud to be the exclusive Platinum Partner for leading IP PA systems and security solutions across the state of Gujarat. 
+                SKY PHLAME INNOVATION is proud to be the exclusive Platinum Partner for astTECS IP PA systems and security solutions across the state of Gujarat. 
               </p>
               
               <ul className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -72,11 +74,15 @@ export function PlatinumPartnerSection() {
               <div className="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-br from-[#f8fafc]/20 via-[#cbd5e1]/10 to-transparent blur-md" />
               <div className="relative flex min-h-[16rem] flex-col items-center justify-center rounded-[2rem] border border-[#f8fafc]/10 bg-[#060c14]/80 p-8 shadow-2xl backdrop-blur-xl">
                 
-                {/* Placeholder for the Brand Logo */}
-                <div className="flex h-24 w-full max-w-[14rem] items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.02]">
-                  <span className="text-center text-sm font-bold tracking-widest text-[#94a3b8]/60 uppercase">
-                    [ Brand Logo ]
-                  </span>
+                {/* astTECS Logo */}
+                <div className="flex h-24 w-full max-w-[14rem] items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
+                  <Image
+                    src="/clients/logos/asttecs.png"
+                    alt="astTECS Logo"
+                    width={180}
+                    height={80}
+                    className="h-full w-auto object-contain drop-shadow-md brightness-110 contrast-125"
+                  />
                 </div>
 
                 <div className="mt-6 text-center">
