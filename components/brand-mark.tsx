@@ -18,7 +18,7 @@ export function BrandMark({
   const logoSize = compact ? 40 : 48;
   const compactLineOne = "Sky Phlame";
   const compactLineTwo = "Innovation";
-  const desktopLocation = "MANJALPUR, VADODARA, GUJARAT";
+  const desktopLocation = "ENGINEERING & SOLUTIONS";
   const desktopName = "SKY PHLAME INNOVATION";
 
   return (
@@ -49,7 +49,7 @@ export function BrandMark({
               isDark ? "text-white/70" : "text-brand-red",
             )}
           >
-            MANJALPUR, VADODARA, GUJARAT
+            ENGINEERING & SOLUTIONS
           </p>
         ) : null}
         {compact ? (

@@ -44,13 +44,13 @@ export const siteConfig = {
     tagline: "Leading Security & Fire Protection Services",
     positioning:
       "Fire alarm systems, surveillance, security systems, and AV solutions from an independent specialist based in Vadodara, Gujarat.",
-    headOffice: "Manjalpur, Vadodara, Gujarat",
+    headOffice: "Engineering & Solutions",
     streetAddress:
-      "4F-407, Rama Emperro, Beside Shell Petrol Pump, Akashwani Road, Manjalpur",
+      "4F-07, Rama Emperro, Beside Shell Petrol Pump, Akashwani Road, Manjalpur",
     city: "Vadodara",
     region: "Gujarat",
     addressDisplay:
-      "4F-407, Rama Emperro, Beside Shell Petrol Pump, Akashwani Road, Manjalpur, Vadodara, Gujarat 390011",
+      "4F-07, Rama Emperro, Beside Shell Petrol Pump, Akashwani Road, Manjalpur, Vadodara, Gujarat 390009",
   },
   contact: {
     phoneDisplay: "+91 6353984044",

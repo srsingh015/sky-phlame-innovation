@@ -33,7 +33,7 @@ const whatsappHref = buildWhatsAppTextUrl(
 );
 
 const mapsEmbedUrl =
-  "https://www.google.com/maps?q=4F-407%20Rama%20Emperro%20Beside%20Shell%20Petrol%20Pump%20Akashwani%20Road%20Manjalpur%20Vadodara%20Gujarat%20390011&output=embed";
+  "https://www.google.com/maps?q=4F-07%20Rama%20Emperro%20Beside%20Shell%20Petrol%20Pump%20Akashwani%20Road%20Manjalpur%20Vadodara%20Gujarat%20390009&output=embed";
 const mapsOpenUrl =
   "https://maps.app.goo.gl/HyMGA5nVQzYcSK4y7?g_st=aw";
 
