@@ -42,46 +42,44 @@ export function BrandMark({
         )}
       />
       <div className="min-w-0">
-        {!compact ? (
-          <p
-            className={cn(
-              "text-[0.65rem] font-bold uppercase tracking-[0.2em]",
-              isDark ? "text-white/70" : "text-brand-red",
-            )}
-          >
-            ENGINEERING & SOLUTIONS
-          </p>
-        ) : null}
         {compact ? (
-          <>
-            <div className="flex flex-col justify-center min-w-0">
-              <p
-                className={cn(
-                  "text-[0.45rem] sm:text-[0.55rem] font-bold uppercase tracking-[0.2em] leading-tight whitespace-nowrap",
-                  isDark ? "text-white/70" : "text-brand-red",
-                )}
-              >
-                {desktopLocation}
-              </p>
-              <p
-                className={cn(
-                  "text-[0.9rem] sm:text-[1.05rem] font-extrabold tracking-tight leading-tight mt-0.5 whitespace-nowrap",
-                  isDark ? "text-white" : "text-brand-navy",
-                )}
-              >
-                {desktopName}
-              </p>
-            </div>
-          </>
+          <div className="flex flex-col justify-center min-w-0">
+            <p
+              className={cn(
+                "text-[0.9rem] sm:text-[1.05rem] font-extrabold tracking-tight leading-tight whitespace-nowrap",
+                isDark ? "text-white" : "text-brand-navy",
+              )}
+            >
+              {desktopName}
+            </p>
+            <p
+              className={cn(
+                "text-[0.45rem] sm:text-[0.55rem] font-bold uppercase tracking-[0.2em] leading-tight mt-0.5 whitespace-nowrap",
+                isDark ? "text-white/70" : "text-brand-red",
+              )}
+            >
+              {desktopLocation}
+            </p>
+          </div>
         ) : (
-          <p
-            className={cn(
-              "truncate text-lg font-bold tracking-tight sm:text-xl",
-              isDark ? "text-white" : "text-brand-navy",
-            )}
-          >
-            {siteConfig.company.name}
-          </p>
+          <>
+            <p
+              className={cn(
+                "truncate text-lg font-bold tracking-tight sm:text-xl",
+                isDark ? "text-white" : "text-brand-navy",
+              )}
+            >
+              {siteConfig.company.name}
+            </p>
+            <p
+              className={cn(
+                "text-[0.65rem] font-bold uppercase tracking-[0.2em]",
+                isDark ? "text-white/70" : "text-brand-red",
+              )}
+            >
+              ENGINEERING & SOLUTIONS
+            </p>
+          </>
         )}
         {!compact ? (
           <p

@@ -31,7 +31,7 @@ const whyChooseMeta = [
   },
 ];
 
-const industriesServed = ["Manufacturing", "Commercial", "Residential"];
+const industriesServed = ["INDUSTRIAL", "Commercial", "Residential"];
 
 export default function Home() {
   return (
@@ -111,7 +111,7 @@ export default function Home() {
               id="trusted-by-heading"
               eyebrow="Trusted By"
               title="Chosen by operating sites that need dependable delivery"
-              description="Supported by ongoing client relationships across manufacturing, commercial, and residential environments where response and reliability matter."
+              description="Supported by ongoing client relationships across INDUSTRIAL, commercial, and residential environments where response and reliability matter."
             />
 
             <div className="section-stack">

@@ -140,7 +140,7 @@ export function Footer() {
             Site environments
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
-            {["Manufacturing", "Commercial", "Residential"].map((item) => (
+            {["INDUSTRIAL", "Commercial", "Residential"].map((item) => (
               <span
                 key={item}
                 className="inline-flex items-center rounded-full border border-white/12 bg-white/6 px-3 py-1.5 text-xs font-semibold text-white/78"

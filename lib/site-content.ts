@@ -113,7 +113,7 @@ export const siteConfig = {
   ],
   about: {
     overview: [
-      "SKY PHLAME INNOVATION is an independent specialist and solution provider for fire alarm systems, surveillance, security systems, and electronic safety solutions, established in 2022 and headquartered in Vadodara, Gujarat.",
+      "SKY PHLAME INNOVATION is an independent specialist and solution provider for fire alarm systems, surveillance, security systems, and electronic safety solutions, established in 2022.",
       "The company supports domestic, commercial, licensed-premises, and public-sector sites with consultancy, implementation, and support services tailored to customer requirements and budget.",
       "Its team delivers innovative solutions through strong technical knowledge, dependable service, and world-class technology for safer and better-monitored spaces.",
       "The company also works with Honeywell-integrated fire and security solutions, including CCTV IP surveillance, access control, PA systems, and Morley fire alarm control panels.",
@@ -340,8 +340,5 @@ export const clients: Client[] = [
     name: "Pidilite Industries",
     assetPath: "/clients/logos/pidilite-industries.png",
   },
-  {
-    name: "astTECS",
-    assetPath: "/clients/logos/asttecs.png",
-  },
+
 ];

@@ -18,7 +18,7 @@ import { buildPhoneHref } from "@/lib/site";
 export const metadata: Metadata = createPageMetadata({
   title: "Clients & Project Sectors | SKY PHLAME INNOVATION",
   description:
-    "Trusted by Thermax, Nissan Bharat Rasayan, Bloom Seal Containers, Elantas Beck India, and Pidilite across manufacturing, commercial, and residential work.",
+    "Trusted by Thermax, Nissan Bharat Rasayan, Bloom Seal Containers, Elantas Beck India, and Pidilite across INDUSTRIAL, commercial, and residential work.",
   path: "/clients",
 });
 
@@ -65,7 +65,7 @@ const caseSnapshots = [
 
 const sectorCards = [
   {
-    title: "Manufacturing",
+    title: "INDUSTRIAL",
     description:
       "Reliable fire and security systems for factories and industrial operations where uptime, safety, and response discipline matter.",
     chips: ["Factories", "Warehouses", "Process plants"],
@@ -105,7 +105,7 @@ export default function ClientsPage() {
                 id="clients-hero-title"
                 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1]"
               >
-                Trusted across manufacturing, commercial, and residential
+                Trusted across INDUSTRIAL, commercial, and residential
                 projects.
               </h1>
               <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-relaxed text-brand-muted-strong">
@@ -279,7 +279,7 @@ export default function ClientsPage() {
               id="project-sectors-heading"
               eyebrow="Project Sectors"
               title="Delivery experience shaped by how each site actually operates"
-              description="Customer work spans manufacturing, commercial, and residential environments where uptime, visibility, and practical support all matter."
+              description="Customer work spans INDUSTRIAL, commercial, and residential environments where uptime, visibility, and practical support all matter."
             />
 
             <div className="section-stack section-grid md:grid-cols-2 md:[grid-auto-rows:1fr] xl:grid-cols-3">

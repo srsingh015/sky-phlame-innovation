@@ -72,7 +72,7 @@ const contactCards = [
 
 const serviceAreaChips = [
   ...siteConfig.serviceAreas,
-  "Manufacturing",
+  "INDUSTRIAL",
   "Commercial",
   "Residential",
 ];
