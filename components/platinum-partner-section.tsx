@@ -49,7 +49,7 @@ export function PlatinumPartnerSection() {
               </h2>
               
               <p className="mt-5 text-base leading-relaxed text-[#94a3b8] sm:text-lg">
-                SKY PHLAME INNOVATION is proud to be the exclusive Platinum Partner for astTECS IP PA systems and security solutions across the state of Gujarat. 
+                SKY PHLAME INNOVATION is proud to be the exclusive Platinum Partner for astTECS IP PA systems and IP PBX solutions across the state of Gujarat. 
               </p>
               
               <ul className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -87,7 +87,7 @@ export function PlatinumPartnerSection() {
 
                 <div className="mt-4 text-center">
                   <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#94a3b8]">
-                    IP PA Systems & Security
+                    IP PA Systems & IP PBX solutions
                   </p>
                   <p className="mt-2 max-w-[16rem] text-[0.8rem] leading-relaxed text-[#64748b]">
                     Delivering state-of-the-art communication and safety technology to your site.
