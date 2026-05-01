@@ -52,19 +52,14 @@ export function BrandMark({
             >
               {desktopName}
             </p>
-            <div
+            <p
               className={cn(
-                "flex w-full items-center justify-between mt-0.5",
-                "text-[0.45rem] sm:text-[0.55rem] font-bold uppercase leading-tight",
+                "text-[0.45rem] sm:text-[0.55rem] font-bold uppercase tracking-[0.2em] leading-tight mt-0.5 whitespace-nowrap pl-[1px]",
                 isDark ? "text-white/70" : "text-brand-red",
               )}
-              aria-hidden="true"
             >
-              {desktopLocation.split("").map((char, i) => (
-                <span key={i}>{char === " " ? "\u00A0" : char}</span>
-              ))}
-            </div>
-            <span className="sr-only">{desktopLocation}</span>
+              {desktopLocation}
+            </p>
           </div>
         ) : (
           <>
@@ -76,19 +71,14 @@ export function BrandMark({
             >
               {siteConfig.company.name}
             </p>
-            <div
+            <p
               className={cn(
-                "flex w-full items-center justify-between mt-0.5",
-                "text-[0.55rem] font-bold uppercase leading-tight",
+                "text-[0.65rem] font-bold uppercase tracking-[0.2em] pl-[1.5px]",
                 isDark ? "text-white/70" : "text-brand-red",
               )}
-              aria-hidden="true"
             >
-              {desktopLocation.split("").map((char, i) => (
-                <span key={i}>{char === " " ? "\u00A0" : char}</span>
-              ))}
-            </div>
-            <span className="sr-only">{desktopLocation}</span>
+              ENGINEERING & SOLUTIONS
+            </p>
           </>
         )}
         {!compact ? (
