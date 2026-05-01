@@ -32,44 +32,42 @@ export function PageIntro({
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(9,16,26,0.95)_0%,rgba(15,23,41,0.9)_44%,rgba(9,16,26,0.92)_100%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_26%,rgba(15,23,41,0.6),transparent_32%),radial-gradient(circle_at_80%_28%,rgba(239,68,68,0.1),transparent_30%),radial-gradient(circle_at_72%_78%,rgba(59,130,246,0.05),transparent_24%)]" />
       <div className="pointer-events-none absolute inset-0 hidden lg:block bg-[radial-gradient(circle_at_18%_24%,rgba(15,23,41,0.5),transparent_34%),radial-gradient(circle_at_84%_28%,rgba(239,68,68,0.12),transparent_28%),linear-gradient(90deg,rgba(255,255,255,0.03)_0%,rgba(255,255,255,0.01)_44%,rgba(255,255,255,0)_100%)]" />
-      <div
-        className="pointer-events-none absolute inset-0 hidden opacity-[0.08] md:block md:opacity-[0.12] lg:opacity-[0.07]"
+      <div className="pointer-events-none absolute inset-0 hidden opacity-[0.08] md:block md:opacity-[0.12] lg:opacity-[0.07]"
         style={{ backgroundImage: noiseTexture, backgroundSize: "160px 160px" }}
       />
 
-      <Container className="relative inner-hero-wrap">
+      <Container className="relative pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-20 lg:pb-24">
         <div
           className={cn(
-            "inner-hero-grid",
-            !aside && "lg:grid-cols-1",
+            "grid gap-10 lg:gap-16",
+            aside ? "lg:grid-cols-[1fr_minmax(auto,26rem)] lg:items-start" : "lg:grid-cols-1",
           )}
         >
-          <div className={cn("max-w-copy", contentClassName)}>
-            <SectionHeading
-              as="h1"
-              size="page"
-              eyebrow={eyebrow}
-              eyebrowClassName="inner-eyebrow"
-              title={title}
-              description={description}
-              titleClassName="inner-h1 mt-2"
-              descriptionClassName="inner-lead mt-4"
-            />
+          <div className={cn("max-w-2xl flex flex-col", contentClassName)}>
+            {eyebrow && (
+              <p className="text-[0.65rem] sm:text-xs font-bold uppercase tracking-[0.2em] text-brand-red mb-3">
+                {eyebrow}
+              </p>
+            )}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1]">
+              {title}
+            </h1>
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-relaxed text-brand-muted-strong">
+              {description}
+            </p>
 
             {actions ? (
-              <div className="inner-hero-actions">
-                <div className="inner-hero-actions-row [&>*]:w-full sm:[&>*]:w-auto">
-                  {actions}
-                </div>
+              <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                {actions}
               </div>
             ) : null}
 
             {highlights?.length ? (
-              <ul className="mt-4 flex flex-wrap gap-1.5 md:mt-5 md:gap-2">
+              <ul className="mt-8 flex flex-wrap gap-2">
                 {highlights.map((item) => (
                   <li
                     key={item}
-                    className="inline-flex items-center rounded-pill border border-white/[0.1] bg-white/[0.06] px-2.75 py-1.25 text-[0.7rem] font-semibold leading-5 text-brand-ink shadow-soft backdrop-blur-sm md:px-3 md:py-1.5 md:text-[0.72rem]"
+                    className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[0.75rem] font-medium text-white/80 shadow-soft backdrop-blur-md"
                   >
                     {item}
                   </li>
@@ -78,7 +76,14 @@ export function PageIntro({
             ) : null}
           </div>
 
-          {aside ? <div className="w-full lg:justify-self-end">{aside}</div> : null}
+          {aside ? (
+            <div className="w-full relative mt-4 lg:mt-0">
+              <div className="absolute -inset-0.5 rounded-[1.5rem] bg-gradient-to-b from-white/10 to-transparent opacity-50 blur-sm pointer-events-none" />
+              <div className="relative rounded-[1.4rem] border border-white/10 bg-[#0a111a]/80 backdrop-blur-xl p-5 sm:p-6 lg:p-7 shadow-2xl">
+                {aside}
+              </div>
+            </div>
+          ) : null}
         </div>
       </Container>
     </section>

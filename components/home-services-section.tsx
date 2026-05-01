@@ -6,9 +6,9 @@ import { services } from "@/lib/site-content";
 
 export function HomeServicesSection() {
   return (
-    <section className="relative w-full pb-20 pt-16 bg-transparent overflow-hidden sm:pb-32">
+    <section className="relative w-full pb-12 pt-10 bg-transparent overflow-hidden sm:pb-24 sm:pt-14">
       <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto max-w-[100rem]">
-        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-20 flex flex-col items-center">
+        <div className="text-center max-w-4xl mx-auto mb-8 md:mb-16 flex flex-col items-center">
           <SectionHeading
             id="services-heading"
             eyebrow="Services"
@@ -19,15 +19,14 @@ export function HomeServicesSection() {
         </div>
 
         {/* Bento Grid Container */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 mx-auto auto-rows-fr">
           {services.map((service, index) => (
-            <div key={service.slug} className="flex h-full min-h-[420px]">
-              <ServiceCard 
-                service={service} 
-                revealIndex={index}
-                enableHoverBg={true} 
-              />
-            </div>
+            <ServiceCard 
+              key={service.slug}
+              service={service} 
+              revealIndex={index}
+              enableHoverBg={true} 
+            />
           ))}
         </div>
       </div>

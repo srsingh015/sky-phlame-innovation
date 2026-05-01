@@ -34,7 +34,7 @@ export type Client = {
 export const siteConfig = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://skyphlame.example.com",
   assets: {
-    logo: "/brand/main-logo.webp",
+    logo: "/brand/main-logo-new.webp",
     openGraph: "/brand/og-image.png",
   },
   company: {

@@ -92,24 +92,23 @@ export default function ContactPage() {
         spacing="none"
         ariaLabelledby="contact-hero-title"
         className="relative isolate overflow-hidden bg-transparent before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(9,16,26,0.95)_0%,rgba(15,23,41,0.9)_44%,rgba(9,16,26,0.92)_100%)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_22%_26%,rgba(15,23,41,0.6),transparent_32%),radial-gradient(circle_at_82%_24%,rgba(239,68,68,0.1),transparent_30%),radial-gradient(circle_at_72%_78%,rgba(59,130,246,0.04),transparent_24%),linear-gradient(90deg,rgba(255,255,255,0.03)_0%,rgba(255,255,255,0.01)_44%,rgba(255,255,255,0)_100%)]"
-        containerClassName="relative inner-hero-wrap"
+        containerClassName="relative pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-20 lg:pb-24"
       >
-        <div className="inner-hero-grid">
-          <div className="max-w-[39rem] lg:max-w-[40rem]">
-            <p className="inner-eyebrow">Contact</p>
+        <div className="grid gap-10 lg:gap-16 lg:grid-cols-[1fr_minmax(auto,26rem)] lg:items-start">
+          <div className="max-w-2xl flex flex-col">
+            <p className="text-[0.65rem] sm:text-xs font-bold uppercase tracking-[0.2em] text-brand-red mb-3">Contact</p>
             <h1
               id="contact-hero-title"
-              className="inner-h1 mt-2"
+              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1]"
             >
               Get local support for survey, installation, and urgent follow-up.
             </h1>
-            <p className="inner-lead mt-4">
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-relaxed text-brand-muted-strong">
               Use WhatsApp for the fastest route, call directly for urgent
               discussions, or move straight into quotes and site visit planning.
             </p>
 
-            <div className="inner-hero-actions">
-              <div className="inner-hero-actions-row">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <ButtonLink
                   href={whatsappHref}
                   target="_blank"
@@ -117,7 +116,7 @@ export default function ContactPage() {
                   variant="whatsapp"
                   size="lg"
                   block
-                  className="min-h-11 sm:min-h-12 sm:w-auto"
+                  className="sm:w-auto"
                   aria-label="WhatsApp SKY PHLAME INNOVATION now"
                 >
                   <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
@@ -128,31 +127,30 @@ export default function ContactPage() {
                   variant="secondary"
                   size="lg"
                   block
-                  className="min-h-11 sm:min-h-12 sm:w-auto"
+                  className="sm:w-auto"
                   aria-label="Call SKY PHLAME INNOVATION now"
                 >
                   <PhoneIcon className="h-4 w-4" aria-hidden="true" />
                   Call Now
                 </ButtonLink>
-              </div>
+            </div>
 
-              <div className="inner-hero-chips">
+            <div className="mt-8 flex flex-wrap gap-2">
                 {heroResponseChips.map((chip) => (
                   <span
                     key={chip}
-                    className="inline-flex items-center rounded-pill border border-white/[0.1] bg-white/[0.06] px-2.75 py-1.25 text-[0.7rem] font-semibold leading-5 text-brand-ink shadow-soft backdrop-blur-sm md:px-3 md:py-1.5 md:text-[0.72rem] lg:px-2.5 lg:py-1.25"
+                    className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[0.75rem] font-medium text-white/80 shadow-soft backdrop-blur-md"
                   >
                     {chip}
                   </span>
                 ))}
-              </div>
             </div>
           </div>
 
-          <aside className="inner-hero-card">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.08),transparent_34%),linear-gradient(180deg,rgba(15,23,41,0.4),rgba(9,16,26,0.2))]" />
-            <div className="relative">
-              <p className="inner-eyebrow">Quick contact</p>
+          <aside className="w-full relative mt-4 lg:mt-0">
+            <div className="absolute -inset-0.5 rounded-[1.5rem] bg-gradient-to-b from-white/10 to-transparent opacity-50 blur-sm pointer-events-none" />
+            <div className="relative rounded-[1.4rem] border border-white/10 bg-[#0a111a]/80 backdrop-blur-xl p-5 sm:p-6 lg:p-7 shadow-2xl">
+              <p className="text-[0.65rem] sm:text-xs font-bold uppercase tracking-[0.2em] text-brand-red mb-3">Quick contact</p>
 
               <div className="mt-3.5 grid gap-2.5">
                 <div className="feature-card p-3 shadow-none md:p-3.5">

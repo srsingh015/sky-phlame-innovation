@@ -109,7 +109,7 @@ function FAQAccordionItem({
 }) {
   return (
     <div
-      className={`group relative overflow-hidden rounded-[1.35rem] border transition-all duration-300 ease-out ${
+      className={`group relative overflow-hidden rounded-[1.1rem] border transition-all duration-300 ease-out ${
         isOpen
           ? "border-white/[0.16] bg-white/[0.06] shadow-lift"
           : "border-white/[0.08] bg-white/[0.03] shadow-soft hover:border-white/[0.12] hover:bg-white/[0.05]"
@@ -126,11 +126,11 @@ function FAQAccordionItem({
         aria-expanded={isOpen}
         aria-controls={`faq-panel-${index}`}
         onClick={onToggle}
-        className="relative z-10 flex w-full items-start gap-4 px-5 py-5 text-left transition-colors md:px-6 md:py-6"
+        className="relative z-10 flex w-full items-start gap-3 px-4 py-3.5 text-left transition-colors sm:gap-3.5 sm:px-5 sm:py-4 md:px-5 md:py-4"
       >
         {/* Question number */}
         <span
-          className={`mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[0.7rem] font-bold transition-all duration-300 ${
+          className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[0.6rem] font-bold transition-all duration-300 ${
             isOpen
               ? "bg-brand-red text-white shadow-[0_8px_20px_-8px_rgba(239,68,68,0.5)]"
               : "border border-white/[0.12] bg-white/[0.06] text-brand-muted"
@@ -141,7 +141,7 @@ function FAQAccordionItem({
 
         {/* Question text */}
         <span
-          className={`flex-1 text-[0.95rem] font-semibold leading-snug transition-colors duration-200 sm:text-base md:text-[1.05rem] ${
+          className={`flex-1 text-[0.82rem] font-semibold leading-snug transition-colors duration-200 sm:text-[0.88rem] md:text-[0.92rem] ${
             isOpen ? "text-brand-ink" : "text-brand-navy"
           }`}
         >
@@ -150,7 +150,7 @@ function FAQAccordionItem({
 
         {/* Toggle icon */}
         <span
-          className={`mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+          className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
             isOpen
               ? "rotate-45 border-brand-red/30 bg-brand-red/10 text-brand-red"
               : "border-white/[0.1] bg-white/[0.04] text-brand-muted"
@@ -158,8 +158,8 @@ function FAQAccordionItem({
           aria-hidden="true"
         >
           <svg
-            width="12"
-            height="12"
+            width="10"
+            height="10"
             viewBox="0 0 12 12"
             fill="none"
             stroke="currentColor"
@@ -184,9 +184,9 @@ function FAQAccordionItem({
           transitionProperty: "max-height, opacity",
         }}
       >
-        <div className="px-5 pb-5 pl-16 md:px-6 md:pb-6 md:pl-[4.5rem]">
+        <div className="px-4 pb-4 pl-[3.25rem] sm:px-5 sm:pb-4 sm:pl-[3.6rem] md:px-5 md:pb-5 md:pl-[3.6rem]">
           <div className="h-px w-full bg-gradient-to-r from-white/[0.08] via-white/[0.12] to-white/[0.04]" />
-          <p className="mt-4 text-[0.9rem] leading-7 text-brand-muted sm:text-sm sm:leading-7 md:text-[0.95rem] md:leading-8">
+          <p className="mt-3 text-[0.8rem] leading-[1.7] text-brand-muted sm:text-[0.82rem] sm:leading-[1.7] md:text-[0.86rem] md:leading-7">
             {item.answer}
           </p>
         </div>
@@ -230,7 +230,7 @@ export function FAQSection() {
         {/* Mobile: single column / Desktop: two columns */}
         <div className="section-stack">
           {/* Single column on smaller screens */}
-          <div className="flex flex-col gap-3 lg:hidden">
+          <div className="flex flex-col gap-2.5 lg:hidden">
             {faqs.map((item, index) => (
               <FAQAccordionItem
                 key={index}
@@ -243,8 +243,8 @@ export function FAQSection() {
           </div>
 
           {/* Two columns on large screens */}
-          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-4">
-            <div className="flex flex-col gap-3">
+          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-3">
+            <div className="flex flex-col gap-2.5">
               {leftColumn.map((item, index) => (
                 <FAQAccordionItem
                   key={index}
@@ -255,7 +255,7 @@ export function FAQSection() {
                 />
               ))}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2.5">
               {rightColumn.map((item, index) => {
                 const realIndex = index + midpoint;
                 return (
@@ -273,8 +273,8 @@ export function FAQSection() {
         </div>
 
         {/* Trust line at bottom */}
-        <div className="mt-6 flex flex-col items-center gap-3 text-center md:mt-8">
-          <p className="text-sm leading-6 text-brand-muted">
+        <div className="mt-5 flex flex-col items-center gap-2.5 text-center md:mt-6">
+          <p className="text-[0.82rem] leading-6 text-brand-muted">
             Still have a question?{" "}
             <a
               href={`https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(

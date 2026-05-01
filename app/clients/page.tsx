@@ -94,26 +94,25 @@ export default function ClientsPage() {
         spacing="none"
         ariaLabelledby="clients-hero-title"
         className="relative isolate overflow-hidden before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(9,16,26,0.98)_0%,rgba(15,23,41,0.92)_52%,rgba(9,16,26,0.95)_100%)] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_18%_20%,rgba(59,130,246,0.06),transparent_30%),radial-gradient(circle_at_84%_22%,rgba(239,68,68,0.1),transparent_26%),radial-gradient(circle_at_70%_72%,rgba(59,130,246,0.04),transparent_22%)]"
-        containerClassName="relative inner-hero-wrap"
+        containerClassName="relative pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pt-20 lg:pb-24"
       >
         <div className="pointer-events-none absolute inset-0 hidden opacity-[0.08] md:block md:opacity-[0.12] [background-image:radial-gradient(rgba(255,255,255,0.06)_0.75px,transparent_0.75px)] [background-size:18px_18px]" />
         <Reveal y={30} duration={0.8}>
-          <div className="inner-hero-grid">
-            <div className="max-w-[40rem]">
-              <p className="inner-eyebrow">Clients</p>
+          <div className="grid gap-10 lg:gap-16 lg:grid-cols-[1fr_minmax(auto,26rem)] lg:items-start">
+            <div className="max-w-2xl flex flex-col">
+              <p className="text-[0.65rem] sm:text-xs font-bold uppercase tracking-[0.2em] text-brand-red mb-3">Clients</p>
               <h1
                 id="clients-hero-title"
-                className="inner-h1 mt-2"
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1]"
               >
                 Trusted across manufacturing, commercial, and residential
                 projects.
               </h1>
-              <p className="inner-lead mt-4">
+              <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-relaxed text-brand-muted-strong">
                 {siteConfig.clientsIntro}
               </p>
 
-              <div className="inner-hero-actions">
-                <div className="inner-hero-actions-row">
+              <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                   <ButtonLink
                     href={clientsWhatsappHref}
                     target="_blank"
@@ -121,7 +120,7 @@ export default function ClientsPage() {
                     variant="whatsapp"
                     size="lg"
                     block
-                    className="min-h-11 sm:min-h-12 sm:w-auto"
+                    className="sm:w-auto"
                     aria-label="WhatsApp SKY PHLAME INNOVATION to discuss a site requirement"
                   >
                     <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
@@ -132,21 +131,20 @@ export default function ClientsPage() {
                     variant="secondary"
                     size="lg"
                     block
-                    className="min-h-11 sm:min-h-12 sm:w-auto"
+                    className="sm:w-auto"
                     aria-label="Call SKY PHLAME INNOVATION"
                   >
                     <PhoneIcon className="h-4 w-4" aria-hidden="true" />
                     Call Now
                   </ButtonLink>
-                </div>
               </div>
             </div>
 
-            <aside className="inner-hero-card">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,68,68,0.08),transparent_34%),linear-gradient(180deg,rgba(15,23,41,0.4),rgba(9,16,26,0.15))]" />
-              <div className="relative">
-                <p className="inner-eyebrow">Proof</p>
-                <h2 className="inner-h2 mt-3.5 text-balance">
+            <aside className="w-full relative mt-4 lg:mt-0">
+              <div className="absolute -inset-0.5 rounded-[1.5rem] bg-gradient-to-b from-white/10 to-transparent opacity-50 blur-sm pointer-events-none" />
+              <div className="relative rounded-[1.4rem] border border-white/10 bg-[#0a111a]/80 backdrop-blur-xl p-5 sm:p-6 lg:p-7 shadow-2xl">
+                <p className="text-[0.65rem] sm:text-xs font-bold uppercase tracking-[0.2em] text-brand-red mb-3">Proof</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-white text-balance">
                   Built for live operating environments
                 </h2>
 
@@ -157,18 +155,18 @@ export default function ClientsPage() {
                         className="mt-0.5 h-4 w-4 shrink-0 text-brand-red"
                         aria-hidden="true"
                       />
-                      <span>{item}</span>
+                      <span className="leading-snug">{item}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-3.5">
-                  <p className="proof-line">Coverage</p>
-                  <div className="mt-2.5 flex flex-wrap gap-1.5">
+                <div className="mt-5 border-t border-white/10 pt-4">
+                  <p className="text-[0.65rem] sm:text-xs font-bold uppercase tracking-[0.2em] text-brand-red mb-3">Coverage</p>
+                  <div className="flex flex-wrap gap-1.5">
                     {siteConfig.serviceAreas.map((area) => (
                       <span
                         key={area}
-                        className="inline-flex items-center rounded-pill border border-white/[0.08] bg-white/[0.04] px-2.25 py-1.25 text-[0.7rem] font-semibold text-brand-ink shadow-soft md:px-2.5 md:py-1.5 md:text-[0.72rem]"
+                        className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[0.75rem] font-medium text-white/80 shadow-soft backdrop-blur-md"
                       >
                         {area}
                       </span>

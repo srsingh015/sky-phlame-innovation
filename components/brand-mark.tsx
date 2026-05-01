@@ -45,37 +45,19 @@ export function BrandMark({
         {!compact ? (
           <p
             className={cn(
-              "text-[0.68rem] font-semibold uppercase tracking-[0.24em]",
+              "text-[0.65rem] font-bold uppercase tracking-[0.2em]",
               isDark ? "text-white/70" : "text-brand-red",
             )}
           >
-            Manjalpur, Vadodara, Gujarat
+            MANJALPUR, VADODARA, GUJARAT
           </p>
         ) : null}
         {compact ? (
           <>
-            <div
-              className={cn(
-                "flex flex-col justify-center leading-[1.05] lg:hidden",
-                isDark ? "text-white" : "text-brand-navy",
-              )}
-            >
-              <span className="whitespace-nowrap text-sm font-semibold">
-                {compactLineOne}
-              </span>
-              <span
-                className={cn(
-                  "mt-0.5 whitespace-nowrap text-[0.78rem] font-medium sm:text-[0.82rem]",
-                  isDark ? "text-white/78" : "text-brand-muted",
-                )}
-              >
-                {compactLineTwo}
-              </span>
-            </div>
-            <div className="hidden lg:block">
+            <div className="flex flex-col justify-center min-w-0">
               <p
                 className={cn(
-                  "text-[0.66rem] font-semibold uppercase tracking-[0.24em]",
+                  "text-[0.45rem] sm:text-[0.55rem] font-bold uppercase tracking-[0.2em] leading-tight whitespace-nowrap",
                   isDark ? "text-white/70" : "text-brand-red",
                 )}
               >
@@ -83,7 +65,7 @@ export function BrandMark({
               </p>
               <p
                 className={cn(
-                  "whitespace-nowrap text-[0.95rem] font-semibold tracking-[0.06em]",
+                  "text-[0.9rem] sm:text-[1.05rem] font-extrabold tracking-tight leading-tight mt-0.5 whitespace-nowrap",
                   isDark ? "text-white" : "text-brand-navy",
                 )}
               >
@@ -94,7 +76,7 @@ export function BrandMark({
         ) : (
           <p
             className={cn(
-              "truncate text-sm font-semibold sm:text-base",
+              "truncate text-lg font-bold tracking-tight sm:text-xl",
               isDark ? "text-white" : "text-brand-navy",
             )}
           >

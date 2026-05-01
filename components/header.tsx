@@ -132,14 +132,14 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#0f1729]/80 supports-[backdrop-filter]:bg-[#0f1729]/[0.72] supports-[backdrop-filter]:backdrop-blur-xl supports-[backdrop-filter]:backdrop-saturate-[1.4]" style={{ boxShadow: '0 1px 0 rgba(239, 68, 68, 0.06), 0 8px 32px -16px rgba(0, 0, 0, 0.3)' }}>
-      <Container>
-        <div className="flex min-h-[var(--header-h)] min-w-0 items-center gap-2 py-2.5 sm:gap-3 sm:py-3 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-8">
+      <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-black/40 supports-[backdrop-filter]:bg-black/20 supports-[backdrop-filter]:backdrop-blur-[40px] supports-[backdrop-filter]:backdrop-saturate-[2] shadow-[0_8px_40px_rgba(0,0,0,0.8)] transition-all duration-300">
+      <div className="mx-auto max-w-[100rem] w-full">
+        <div className="flex min-h-[4.25rem] min-w-0 items-center justify-between gap-2 px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-8">
           <BrandMark className="min-w-0 flex-1 lg:min-w-[18.5rem] lg:flex-none lg:justify-self-start" compact />
 
           <nav
             aria-label="Primary"
-            className="hidden items-center justify-center gap-2 lg:flex lg:justify-self-center"
+            className="hidden items-center justify-center gap-1 lg:flex lg:justify-self-center"
           >
             {siteConfig.navigation.map((item) => (
               <Link
@@ -147,10 +147,10 @@ export function Header() {
                 href={item.href}
                 aria-current={isActiveLink(pathname, item.href) ? "page" : undefined}
                 className={cn(
-                  "rounded-pill px-3.5 py-2 text-sm font-medium transition",
+                  "relative rounded-full px-4 py-2.5 text-sm font-semibold transition-all duration-300 ease-out",
                   isActiveLink(pathname, item.href)
-                    ? "bg-brand-accent text-brand-navy"
-                    : "text-brand-muted hover:bg-white/[0.06] hover:text-brand-navy",
+                    ? "bg-white/10 text-white shadow-[0_0_12px_rgba(255,255,255,0.1)]"
+                    : "text-white/70 hover:bg-white/[0.08] hover:text-white",
                 )}
               >
                 {item.label}
@@ -175,28 +175,7 @@ export function Header() {
             </ButtonLink>
           </div>
 
-          <div className="flex shrink-0 items-center gap-1.5 md:hidden">
-            <ButtonLink
-              href={whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              variant="whatsapp"
-              size="sm"
-              className="h-10 w-10 min-w-0 rounded-[1rem] px-0"
-              aria-label="WhatsApp SKY PHLAME INNOVATION"
-            >
-              <WhatsAppIcon className="h-4 w-4" aria-hidden="true" />
-            </ButtonLink>
-            <ButtonLink
-              href={callHref}
-              variant="secondary"
-              size="sm"
-              className="h-10 w-10 min-w-0 rounded-[1rem] px-0"
-              aria-label="Call SKY PHLAME INNOVATION"
-            >
-              <PhoneIcon className="h-4 w-4" aria-hidden="true" />
-            </ButtonLink>
-          </div>
+
 
           <button
             ref={menuButtonRef}
@@ -204,14 +183,14 @@ export function Header() {
             onClick={openMenu}
             aria-expanded={isMenuOpen}
             aria-controls={DRAWER_ID}
-            className="btn btn-tertiary btn-sm h-10 w-10 shrink-0 px-0 sm:w-auto sm:px-3 lg:hidden"
+            className="btn btn-tertiary btn-sm h-10 w-10 shrink-0 px-0 sm:w-auto sm:px-3 lg:hidden border-white/20 hover:bg-white/10"
           >
             <span className="sr-only">Open navigation menu</span>
             <MenuIcon className="h-4 w-4" aria-hidden="true" />
             <span className="hidden md:inline">Menu</span>
           </button>
         </div>
-      </Container>
+      </div>
       </header>
 
       {typeof document !== "undefined" && isDrawerMounted

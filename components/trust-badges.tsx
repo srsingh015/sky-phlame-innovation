@@ -36,10 +36,10 @@ export function TrustBadges({
               <Icon className="h-5 w-5" aria-hidden="true" />
             </IconCircle>
             <div className="min-w-0">
-              <p className="text-base font-semibold leading-6 text-brand-navy sm:text-lg">
+              <p className="text-[0.88rem] font-semibold leading-snug text-brand-navy sm:text-base">
                 {badge.title}
               </p>
-              <p className="mt-2 text-sm leading-6 text-brand-muted">
+              <p className="mt-1.5 text-[0.78rem] leading-[1.55] text-brand-muted sm:text-[0.82rem] sm:leading-6">
                 {badge.description}
               </p>
             </div>

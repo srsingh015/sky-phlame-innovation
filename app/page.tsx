@@ -83,13 +83,13 @@ export default function Home() {
                       <CheckIcon className="h-5 w-5" aria-hidden="true" />
                     )}
                   </IconCircle>
-                  <h3 className="mt-5 text-xl font-semibold leading-snug text-brand-navy">
+                  <h3 className="mt-3.5 text-[1.02rem] font-semibold leading-snug text-brand-navy sm:text-lg">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-brand-muted">
+                  <p className="mt-2 text-[0.78rem] leading-[1.6] text-brand-muted sm:text-[0.84rem] sm:leading-6">
                     {item.description}
                   </p>
-                  <p className="proof-line mt-auto pt-5">
+                  <p className="proof-line mt-auto pt-3.5">
                     {whyChooseMeta[index]?.proof}
                   </p>
                 </article>
@@ -118,8 +118,8 @@ export default function Home() {
               <ClientsStrip />
             </div>
 
-            <div className="mt-5 flex flex-col gap-3 md:mt-6 md:gap-4 lg:flex-row lg:items-center lg:justify-between">
-              <p className="flex-1 min-w-0 text-[0.8rem] sm:text-sm leading-6 text-brand-muted md:leading-7 truncate">
+            <div className="mt-4 flex flex-col gap-2.5 md:mt-5 md:gap-3 lg:flex-row lg:items-center lg:justify-between">
+              <p className="flex-1 min-w-0 text-[0.76rem] sm:text-[0.82rem] leading-5 text-brand-muted md:leading-6 truncate">
                 {siteConfig.clientTrustLine}
               </p>
               <div className="flex flex-wrap items-center gap-2">
