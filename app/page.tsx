@@ -110,7 +110,7 @@ export default function Home() {
             <SectionHeading
               id="trusted-by-heading"
               eyebrow="Trusted By"
-              title="Chosen by operating sites that need dependable delivery"
+              title="Our Happy Clients"
               description="Supported by ongoing client relationships across INDUSTRIAL, commercial, and residential environments where response and reliability matter."
             />
 

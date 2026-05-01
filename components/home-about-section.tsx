@@ -73,7 +73,7 @@ export function HomeAboutSection() {
             <SectionHeading
               id="home-about-heading"
               eyebrow="About Us"
-              title="Specialist fire, security, and AV integration for live operating sites"
+              title="Trusted fire detection system, security system, and AV solutions for operating environments"
               description="SKY PHLAME INNOVATION supports industrial, commercial, and residential projects with practical planning, disciplined installation coordination, and support that stays close after handover."
             />
 
