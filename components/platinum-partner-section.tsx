@@ -31,8 +31,8 @@ export function PlatinumPartnerSection() {
             {/* Left Content Area */}
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-[#cbd5e1]/30 bg-[#f8fafc]/10 px-3 py-1.5 backdrop-blur-md">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-tr from-[#94a3b8] to-[#f1f5f9] shadow-[0_0_10px_rgba(241,245,249,0.5)]">
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" className="text-[#0f172a]">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-tr from-[#d946ef] to-[#c026d3] shadow-[0_0_10px_rgba(217,70,239,0.5)]">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" className="text-white">
                     <path d="M6 1L7.5 4.5L11 5.5L8.5 8.5L9.5 12L6 10L2.5 12L3.5 8.5L1 5.5L4.5 4.5L6 1Z" fill="currentColor"/>
                   </svg>
                 </span>
@@ -45,7 +45,7 @@ export function PlatinumPartnerSection() {
                 id="platinum-partner-heading"
                 className="mt-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl leading-[1.1]"
               >
-                Official astTECS Platinum Partner for Gujarat
+                Official <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d946ef] to-[#c026d3]">astTECS</span> Platinum Partner for Gujarat
               </h2>
               
               <p className="mt-5 text-base leading-relaxed text-[#94a3b8] sm:text-lg">
@@ -71,25 +71,25 @@ export function PlatinumPartnerSection() {
 
             {/* Right Card / Logo Showcase */}
             <div className="relative">
-              <div className="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-br from-[#f8fafc]/20 via-[#cbd5e1]/10 to-transparent blur-md" />
+              {/* Brand-colored glow behind the card */}
+              <div className="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-br from-[#d946ef]/30 via-[#c026d3]/10 to-transparent blur-xl" />
               <div className="relative flex min-h-[16rem] flex-col items-center justify-center rounded-[2rem] border border-[#f8fafc]/10 bg-[#060c14]/80 p-8 shadow-2xl backdrop-blur-xl">
                 
-                {/* astTECS Logo */}
-                <div className="flex h-24 w-full max-w-[14rem] items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
+                {/* astTECS Logo (Larger, no restrictive box) */}
+                <div className="relative flex h-28 w-full max-w-[16rem] items-center justify-center">
                   <Image
                     src="/clients/logos/asttecs.png"
                     alt="astTECS Logo"
-                    width={180}
-                    height={80}
-                    className="h-full w-auto object-contain drop-shadow-md brightness-110 contrast-125"
+                    fill
+                    className="object-contain drop-shadow-[0_0_20px_rgba(217,70,239,0.35)] brightness-125 contrast-125"
                   />
                 </div>
 
-                <div className="mt-6 text-center">
+                <div className="mt-4 text-center">
                   <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#94a3b8]">
                     IP PA Systems & Security
                   </p>
-                  <p className="mt-1.5 text-[0.8rem] text-[#64748b]">
+                  <p className="mt-2 max-w-[16rem] text-[0.8rem] leading-relaxed text-[#64748b]">
                     Delivering state-of-the-art communication and safety technology to your site.
                   </p>
                 </div>
