@@ -73,7 +73,7 @@ export function HomeAboutSection() {
             <SectionHeading
               id="home-about-heading"
               eyebrow="About Us"
-              title="Local fire, security, and AV specialists built around dependable site execution"
+              title="Specialist fire, security, and AV integration for live operating sites"
               description="SKY PHLAME INNOVATION supports industrial, commercial, and residential projects with practical planning, disciplined installation coordination, and support that stays close after handover."
             />
 
@@ -120,7 +120,7 @@ export function HomeAboutSection() {
                   {value}
                 </span>
               ))}
-              <span className="chip">{siteConfig.company.headOffice}</span>
+
             </div>
 
             <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
