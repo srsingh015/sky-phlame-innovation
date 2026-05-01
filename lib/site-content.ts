@@ -143,7 +143,7 @@ export const siteConfig = {
   ],
   howWeWork: ["Survey", "Design", "Installation", "Support"],
   clientTrustLine:
-    "Reliable products and prompt engineering support for manufacturing, commercial, and residential sites.",
+    "Reliable products and prompt engineering support for INDUSTRIAL, commercial, and residential sites.",
   clientsIntro:
     "SKY PHLAME INNOVATION serves multinational and private companies, including manufacturing factories, commercial projects, and residential sites where dependable fire and security systems matter every day.",
 } as const;

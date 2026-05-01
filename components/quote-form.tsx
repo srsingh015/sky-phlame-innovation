@@ -238,11 +238,11 @@ export function QuoteForm({
           className={cn(fieldClassName, errors.service && errorFieldClassName)}
           onInput={() => clearFieldError("service")}
         >
-          <option value="" disabled>
+          <option value="" disabled className={isDark ? "bg-[#0f1729] text-white" : "bg-white text-brand-navy"}>
             Select a service
           </option>
           {serviceOptions.map((option) => (
-            <option key={option} value={option}>
+            <option key={option} value={option} className={isDark ? "bg-[#0f1729] text-white" : "bg-white text-brand-navy"}>
               {option}
             </option>
           ))}
